@@ -5,7 +5,7 @@ import "../../styles/home.scss";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
-
+//TEST
 	return (
 		<div className="text-center mt-5">
 			<h1>HOME</h1>
@@ -18,6 +18,7 @@ export const Home = () => {
 				<a href="https://github.com/4GeeksAcademy/react-flask-hello/tree/95e0540bd1422249c3004f149825285118594325/docs">
 					This is a link
 				</a>
+                
 			</p>
 		</div>
 	);
