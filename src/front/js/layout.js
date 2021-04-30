@@ -5,10 +5,18 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
+import { Login } from "./pages/login";
+import { Historial } from "./pages/historial";
+import { Detalles } from "./pages/detalles";
+import { Register } from "./pages/register";
+import { Recuperacion } from "./pages/recuperacion";
+import { HomeEmpresario } from "./pages/homeEmpresario";
+import { HomeUsuario } from "./pages/homeUsuario";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { homeEmpresario } from "./pages/homeEmpresario";
 
 //create your first component
 const Layout = () => {
@@ -28,8 +36,29 @@ const Layout = () => {
 						<Route exact path="/demo">
 							<Demo />
 						</Route>
+						<Route exact path="/homeEmpresario">
+							<HomeEmpresario />
+						</Route>
+						<Route exact path="/homeUsuario">
+							<HomeUsuario />
+						</Route>
+						<Route exact path="/login">
+							<Login />
+						</Route>
+						<Route exact path="/register">
+							<Register />
+						</Route>
+						<Route exact path="/historial">
+							<Historial />
+						</Route>
+						<Route exact path="/detalles">
+							<Detalles />
+						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
+						</Route>
+						<Route exact path="/recuperacion">
+							<Recuperacion />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
