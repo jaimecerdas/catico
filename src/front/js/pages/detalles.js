@@ -10,13 +10,62 @@ export const Detalles = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="container">
-			<br />
-			<p>Detalle</p>
-
-			<Link to="/">
-				<button className="btn btn-primary">Back home</button>
-			</Link>
+		<div
+			className="jumbotron"
+			style={{
+				backgroundImage: `url("https://primercanjedeuda.org/wp-content/uploads/2016/05/Nature-Costa-Rica-bk.jpg")`,
+				backgroundSize: "cover"
+			}}>
+			<h1 className="display-4" style={{ color: "white" }}>
+				Nombre del Camping
+			</h1>{" "}
+			<hr className="my-4" />
+			<div className="card mb-3" style={{ width: "25cm", height: "8.5cm" }}>
+				<div className="row g-0">
+					<div className="col-md-4">
+						<img
+							src="https://media-cdn.tripadvisor.com/media/photo-p/13/ab/fa/93/nature-costa-rica-tours.jpg"
+							style={{ width: "8cm", height: "8cm" }}
+							alt="..."
+						/>
+					</div>
+					<div className="col-md-8">
+						<div className="card-body">
+							<h5 className="" />
+							<p className="card-text">
+								Este es un pequeño emprendimiento que busca brindar un espacio seguro para que pueda
+								venir con su familia y pasar un momento bonito.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div className="container" style={{ height: "2cm", padding: "0.5cm", color: "yellow" }}>
+				<div className="row">
+					<div className="col-sm-2">
+						<strong>Petfriendly: </strong>
+						{/* {store.people[params.theid].name} */}
+					</div>
+					<div className="col-sm-2">
+						<strong>Bathroom: </strong>
+					</div>
+					<div className="col-sm-2">
+						<strong>Food: </strong>
+					</div>
+					<div className="col-sm-2">
+						<strong>Parking: </strong>
+					</div>
+					<div className="col-sm-2">
+						<strong>Actvidades recreativas: </strong>
+					</div>
+					<div className="col-sm-2">
+						<strong>Acceso buses:</strong>
+					</div>
+				</div>
+			</div>
+			<a className="btn btn-primary" href="/" role="button">
+				Back home
+			</a>
 		</div>
 	);
 };
