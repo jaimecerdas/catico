@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 import { Context } from "../store/appContext";
 
@@ -35,7 +36,7 @@ export const Detalles = () => {
 	}
 
 	function printRatingResult(result, num = 0) {
-		// result.textContent = `${num}/5`;
+		// result.textContent = `${num}/5`; ME TIRA ERROR Y NO SÉ PARA QUÉ SIRVE, AL COMENTARLO ME FUNCIONÓ
 	}
 
 	executeRating(ratingStars, ratingResult);
@@ -71,6 +72,20 @@ export const Detalles = () => {
 					</div>
 				</div>
 			</div>
+			<div className="informacion" style={{ color: "yellow" }}>
+				<tr>
+					<i className="Ubicación" />
+					Ubicación:
+				</tr>
+				<tr>
+					<i className="Correo" />
+					Correo:
+				</tr>
+				<tr>
+					<i className="Contacto" />
+					Contacto:
+				</tr>
+			</div>
 			<div className="container" style={{ height: "2cm", padding: "0.5cm", color: "yellow" }}>
 				<div className="row">
 					<div className="col-sm-2">
@@ -102,7 +117,7 @@ export const Detalles = () => {
 				<i className="rating__star far fa-star" />
 			</div>
 			<div>
-				<a className="btn btn-primary" href="/" role="button">
+				<a className="btn btn-primary" href="/homeUsuario" role="button">
 					Back home
 				</a>
 			</div>
