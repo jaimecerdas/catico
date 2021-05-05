@@ -17,6 +17,7 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { homeEmpresario } from "./pages/homeEmpresario";
+import { MapContainer } from "./component/mapContainer";
 
 //create your first component
 const Layout = () => {
@@ -59,6 +60,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/recuperacion">
 							<Recuperacion />
+						</Route>
+						<Route exact path="/mapa">
+							<MapContainer />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

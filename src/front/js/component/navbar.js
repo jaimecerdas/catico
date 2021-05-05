@@ -36,6 +36,9 @@ export const Navbar = () => {
 				<Link to="/detalles">
 					<button className="btn btn-light mx-2">Detalles</button>
 				</Link>
+				<Link to="/mapa">
+					<button className="btn btn-light mx-2">Mapa</button>
+				</Link>
 			</div>
 		</nav>
 	);

@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 
 import "../../styles/demo.scss";
-import { MapContainer } from "../component/mapContainer";
 
 export const HomeEmpresario = () => {
 	const { store, actions } = useContext(Context);
@@ -13,7 +11,6 @@ export const HomeEmpresario = () => {
 	return (
 		<div className="container">
 			<br />
-			<MapContainer />
 			<div className="jumbotron">
 				<h1 className="display-4">¡Hola, (Nombre)!</h1>
 				<p className="lead">Gracias por utilizar CampingTico.</p>
