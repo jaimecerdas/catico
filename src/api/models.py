@@ -3,15 +3,15 @@ from sqlalchemy.sql import func
 
 db = SQLAlchemy()
 
-class Usuario(db.Model):
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(120), unique = True, nullable = False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    pin = db.Column(db.Integer(4), unique=True, nullable=False)
+    pin = db.Column(db.Integer, unique=True, nullable=False)
 
     def __repr__(self):
-        return '<Usuario %r>' % self.nombre
+        return '<User %r>' % self.nombre
 
     def serialize(self):
         return {
@@ -26,7 +26,7 @@ class Empresario(db.Model):
     nombre = db.Column(db.String(120), unique = True, nullable = False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    pin = db.Column(db.Integer(4), unique=True, nullable=False)
+    pin = db.Column(db.Integer, unique=True, nullable=False)
 
     def __repr__(self):
         return '<Empresario %r>' % self.nombre
@@ -69,8 +69,9 @@ class Lugares(db.Model):
 class Visitas(db.Model):
     __tablename__ = 'visitas'
     id = db.Column(db.Integer, primary_key=True)
+    user_email = db.Column(db.String(250), nullable=False)
     lugares_id = db.Column(db.Integer, db.ForeignKey('lugares.id'), nullable=False)
-    calificacion = db.Column(db.Integer(5), unique=True, nullable=False)
+    calificacion = db.Column(db.Integer, unique=True, nullable=False)
  
     def __repr__(self):
         return '<Visitas %r>' % self.id
