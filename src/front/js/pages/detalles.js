@@ -89,23 +89,29 @@ export const Detalles = () => {
 			<div className="container" style={{ height: "2cm", padding: "0.5cm", color: "yellow" }}>
 				<div className="row">
 					<div className="col-sm-2">
-						<strong>Petfriendly: </strong>
+						<strong>nombre: </strong>
 						{/* {store.people[params.theid].name} */}
 					</div>
-					<div className="col-sm-2">
-						<strong>Bathroom: </strong>
+					<div className="col-sm-">
+						<strong>ubicación: </strong>
 					</div>
-					<div className="col-sm-2">
-						<strong>Food: </strong>
+					<div className="col-sm-">
+						<strong>petFriendly: </strong>
 					</div>
-					<div className="col-sm-2">
-						<strong>Parking: </strong>
+					<div className="col-sm-">
+						<strong>accesoTransporte: </strong>
 					</div>
-					<div className="col-sm-2">
-						<strong>Actvidades recreativas: </strong>
+					<div className="col-sm-">
+						<strong>baños: </strong>
 					</div>
-					<div className="col-sm-2">
-						<strong>Acceso buses:</strong>
+					<div className="col-sm-">
+						<strong>Actividades:</strong>
+					</div>
+					<div className="col-sm-">
+						<strong>electricidad:</strong>
+					</div>
+					<div className="col-sm-">
+						<strong>descripcion:</strong>
 					</div>
 				</div>
 			</div>

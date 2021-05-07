@@ -9,7 +9,7 @@ import "../../styles/demo.scss";
 
 export function Usuario(props) {
 	return (
-		<div className="card" style={{ width: "18rem" }}>
+		<div className="card" style={{ width: "18rem", margin: "0.5cm" }}>
 			<img
 				src="https://media-cdn.tripadvisor.com/media/photo-p/13/ab/fa/93/nature-costa-rica-tours.jpg"
 				className="card-img-top"
