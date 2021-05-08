@@ -39,6 +39,9 @@ export const Navbar = () => {
 				<Link to="/mapa">
 					<button className="btn btn-light mx-2">Mapa</button>
 				</Link>
+				<Link to="/usuario">
+					<button className="btn btn-primary">usuario</button>
+				</Link>
 			</div>
 		</nav>
 	);
