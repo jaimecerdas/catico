@@ -12,3 +12,4 @@ export const Footer = () => (
 		<p>CampingTico © 2021</p>
 	</footer>
 );
+//hola//
