@@ -1,69 +1,67 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-
-import { Context } from "../store/appContext";
-
-// CAMBIAR LA HOJA DE ESTILO ACA
-import "../../styles/demo.scss";
+import React, { useState } from "react";
 
 export const Login = () => {
-	const { store, actions } = useContext(Context);
+	const [email, setEmail] = useState("");
+	const [contraseña, setPassword] = useState("");
+
+	const handleSubmit = e => {
+		e.preventDefault();
+
+		const body = {
+			email: email,
+			Contraseña: Contraseña
+		};
+
+		// fetch de LOGIN
+		fetch("https://3000-peach-reindeer-5dsbnefl.ws-us03.gitpod.io/login", {
+			method: "POST",
+			body: JSON.stringify(body),
+			headers: {
+				"Content-Type": "application/json"
+			}
+		})
+			.then(res => res.json())
+			.then(data => {
+				console.log(data);
+				// añadir token a session
+				sessionStorage.setItem("my_token", data.token);
+				// let token = sessionStorage.getItem("my_token")
+			})
+			.catch(err => console.log(err));
+	};
 
 	return (
-		<div className="container">
-			<div className="row">
-				<div className="col" />
-
-				<div className="col">
-					<div className="text-center">
-						<img src="https://i.ibb.co/B337kMf/logo.png" width="120px" alt="" />
-					</div>
+		<div className="mx-auto pt-5">
+			<h1>Login</h1>
+			<form onSubmit={handleSubmit} style={{ width: "500px" }}>
+				<div className="mb-3">
+					<label htmlFor="exampleInputEmail1" className="form-label">
+						Correo electrónico
+					</label>
+					<input
+						onChange={e => setEmail(e.target.value)}
+						type="email"
+						className="form-control"
+						id="exampleInputEmail1"
+						aria-describedby="emailHelp"
+					/>
+					<div id="emailHelp" className="form-text" />
 				</div>
-				<h2 className="fw-bold text-center py-5">Login</h2>
-
-				<form action="#">
-					<div className="mb-4">
-						<label htmlFor="correo electronico" className="form-label">
-							Correo electrónico
-						</label>
-						<input type="correo electronico" className="form-control" name="correo electronico" />
-					</div>
-
-					<div className="mb-4">
-						<label htmlFor="contraseña" className="form-label">
-							Contraseña
-						</label>
-						<input type="contraseña" className="form-control" name="contraseña" />
-					</div>
-
-					<p>Selecciona el tipo de usuario que sos</p>
-
-					<input type="checkbox" name="Soy usuario" className="form-check-input" />
-					<label htmlFor="Soy usuario" className="form-check-label">
-						Soy Usuario
+				<div className="mb-3">
+					<label htmlFor="exampleInputPassword1" className="form-label">
+						Contraseña
 					</label>
-
-					<input type="checkbox" name="Soy empresario" className="form-check-input" />
-					<label htmlFor="Soy empresario" className="form-check-label">
-						Soy Empresario
-					</label>
-
-					<div className="d-grid">
-						<button type="submit" className="btn btn-primary">
-							Sign In
-						</button>
-					</div>
-
-					<div className="my-3">
-						<span>
-							No tienes cuenta? <a href="#">Regístrate</a>
-						</span>
-						<span>
-							Olvidaste la contarseña? <a href="#">Recupera la contraseña</a>
-						</span>
-					</div>
-				</form>
-			</div>
+					<input
+						onChange={e => setPassword(e.target.value)}
+						type="Contraseña"
+						className="form-control"
+						id="exampleInputPassword1"
+					/>
+				</div>
+				<button type="submit" className="btn btn-primary">
+					Ingresar
+				</button>
+			</form>
 		</div>
 	);
 };
