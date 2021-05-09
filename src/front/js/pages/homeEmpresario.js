@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Context } from "../store/appContext";
+import "leaflet/dist/leaflet.css";
 
 import "../../styles/demo.scss";
 
@@ -25,6 +26,7 @@ export const HomeEmpresario = () => {
 					</a>
 				</p>
 			</div>
+
 			<div className="cards" id="tueslugares">
 				<h1 className="display-4 my-4">Tus Lugares</h1>
 				<div className="card">
@@ -124,7 +126,19 @@ export const HomeEmpresario = () => {
 					</form>
 				</div>
 			</div>
-
+			<div>
+				<MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+					<TileLayer
+						attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+						url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+					/>
+					<Marker position={[51.505, -0.09]}>
+						<Popup>
+							A pretty CSS3 popup. <br /> Easily customizable.
+						</Popup>
+					</Marker>
+				</MapContainer>
+			</div>
 			<Link to="/">
 				<button className="btn btn-primary my-5">Back home</button>
 			</Link>
