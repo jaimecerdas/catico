@@ -3,7 +3,7 @@ import { Context } from "../store/appContext";
 import "../../styles/footer.scss";
 
 export const Footer = () => (
-	<footer className="footer mt-auto py-3 text-center">
+	<footer className="footer mt-auto py-3 text-center" style={{ clear: "both" }}>
 		<p>
 			<i className="fab fa-facebook-square" />
 			<a href="http://www.facebook.com">/CampingTico </a>

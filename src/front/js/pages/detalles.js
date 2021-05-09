@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import { Context } from "../store/appContext";
 
 // CAMBIAR LA HOJA DE ESTILO ACA
-import "../../styles/demo.scss";
+import "../../styles/estrellas.scss";
 
 export const Detalles = () => {
 	const { store, actions } = useContext(Context);

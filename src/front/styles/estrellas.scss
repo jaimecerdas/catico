@@ -14,16 +14,16 @@
    margin-bottom: 10px;
 }
 
-// .rating__result {
-//    position: absolute;
-//    top: 0;
-//    left: 0;
-//    transform: translateY(-10px) translateX(-5px);
-//    z-index: -9;
-//    font: 3em Arial, Helvetica, sans-serif;
-// //    color: #30df0d8e;
-//    pointer-events: none;
-// }
+.rating__result {
+   position: absolute;
+   top: 0;
+   left: 0;
+   transform: translateY(-10px) translateX(-5px);
+   z-index: -9;
+   font: 3em Arial, Helvetica, sans-serif;
+   color: #30df0d8e;
+   pointer-events: none;
+}
 
 .rating__star {
    font-size: 1.3em;
