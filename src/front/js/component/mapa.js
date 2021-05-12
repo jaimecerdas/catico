@@ -9,6 +9,7 @@ import "../../styles/demo.scss";
 
 export const Mapa = () => {
 	const { store, actions } = useContext(Context);
+
 	const center = [9.7551, -82.8677];
 
 	return (
