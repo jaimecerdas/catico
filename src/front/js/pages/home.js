@@ -48,7 +48,10 @@ export const Home = () => {
 			</div>
 
 			<Jumbotron>
-				<h1>Camping Tico🍃</h1>
+				<h1>
+					Camping Tico
+					<i className="fas fa-leaf" />
+				</h1>
 				<p>
 					This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
 					featured content or information.

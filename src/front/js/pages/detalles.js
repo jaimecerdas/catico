@@ -91,19 +91,55 @@ export const Detalles = () => {
 								<div className="col-md-8" key={index}>
 									<div className="card-body">
 										<h5 className="card-title">{item.nombre}</h5>
-										<p className="card-text">{item.descripcion}</p>
+										<p className="card-text">
+											<tr>
+												<strong>¿Quiénes somos?</strong>
+											</tr>
+											{item.descripcion}
+										</p>
 										<div className="container">
 											<div className="col">
-												<div className="col">Contacto:</div>
-												<div className="col">E-mail:</div>
-												<div className="col">Teléfono:</div>
-												<div className="col">Ubicación:</div>
-												<div className="col-3 col-sm-3">PetFriendly:</div>
-												<div className="col-3 col-sm-3">AccesoTransporte:</div>
-												<div className="col-3 col-sm-3">Baños:</div>
-												<div className="col-3 col-sm-3">Actividades:</div>
-												<div className="col-3 col-sm-3">Electricidad:</div>
-												<div className="col-3 col-sm-3">Familiar:</div> <br />
+												<div className="col">
+													<strong>Contacto:</strong>
+													{item.contacto}
+												</div>
+												<div className="col">
+													<strong>E-mail:</strong>
+													{item.email}
+												</div>
+												<div className="col">
+													<strong>Teléfono:</strong>
+													{item.telefono}
+												</div>
+												<div className="col">
+													<strong>Ubicación:</strong>
+													{item.ubicacion}
+												</div>
+												<div className="col-sm">
+													<strong>Pet-Friendly:</strong>
+													{item.petfriendly}
+												</div>
+												<div className="col-sm">
+													<strong>Acceso Transporte:</strong>
+													{item.accesotransporte}
+												</div>
+												<div className="col-sm">
+													<strong>Baños:</strong>
+													{item.banos}
+												</div>
+												<div className="col-sm">
+													<strong>Actividades extras:</strong>
+													{item.actividades}
+												</div>
+												<div className="col-sm">
+													<strong>Electricidad:</strong>
+													{item.electricidad}
+												</div>
+												<div className="col-sm">
+													<strong>Familiar:</strong>
+													{item.familiar}
+												</div>{" "}
+												<br />
 											</div>
 										</div>
 
