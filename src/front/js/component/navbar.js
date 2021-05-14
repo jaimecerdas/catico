@@ -27,6 +27,9 @@ export const Navbar = () => {
 				<Link to="/login">
 					<button className="btn btn-light mx-2">Login</button>
 				</Link>
+				<Link to="/loginempresario">
+					<button className="btn btn-light mx-2">Loginempresario</button>
+				</Link>
 				<Link to="/recuperacion">
 					<button className="btn btn-light mx-2">Recuperacion</button>
 				</Link>

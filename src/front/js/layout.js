@@ -7,6 +7,7 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { Login } from "./pages/login";
+import { Loginempresario } from "./pages/loginempresario";
 import { Historial } from "./pages/historial";
 import { Detalles } from "./pages/detalles";
 import { Register } from "./pages/register";
@@ -49,6 +50,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/login">
 							<Login />
+						</Route>
+						<Route exact path="/loginempresario">
+							<Loginempresario />
 						</Route>
 						<Route exact path="/register">
 							<Register />

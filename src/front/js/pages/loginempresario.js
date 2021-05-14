@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 
-export const Login = () => {
+export const Loginempresario = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [auth, setAuth] = useState(false);
@@ -35,7 +35,7 @@ export const Login = () => {
 
 	return (
 		<div className="mx-auto pt-5">
-			<h1>Login</h1>
+			<h1>LoginEmpresario</h1>
 			<form onSubmit={handleSubmit} style={{ width: "500px" }}>
 				<div className="mb-3">
 					<label htmlFor="exampleInputEmail1" className="form-label">
@@ -65,7 +65,7 @@ export const Login = () => {
 					Ingresar
 				</button>
 			</form>
-			{auth ? <Redirect to="/homeUsuario" /> : null}
+			{auth ? <Redirect to="/homeEmpresario" /> : null}
 		</div>
 	);
 };
