@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Carousel, Jumbotron, Button } from "react-bootstrap";
-
 import { Context } from "../store/appContext";
 
 // CAMBIAR LA HOJA DE ESTILO ACA
@@ -9,6 +8,7 @@ import "../../styles/estrellas.scss";
 
 export const Detalles = () => {
 	const { store, actions } = useContext(Context);
+	// const params = useParams();
 
 	const ratingStars = [...document.getElementsByClassName("rating__star")];
 	const ratingResult = document.querySelector(".rating__result");
@@ -36,16 +36,19 @@ export const Detalles = () => {
 	}
 
 	function printRatingResult(result, num = 0) {
-		// result.textContent = `${num}/5`; ME TIRA ERROR Y NO SÉ PARA QUÉ SIRVE, AL COMENTARLO ME FUNCIONÓ
+		// result.textContent = [];
 	}
 
 	executeRating(ratingStars, ratingResult);
+	console.log("midata", store.lugar);
 
 	return (
 		<div ClassName="container">
-			<div className="card mb-3" style={{ maxwidth: "540px", margin: "1cm", padding: "0.5cm" }}>
-				<div className="row">
-					<div className="col-md-4">
+			<div
+				className="card mb-3 border border-primary align-middle"
+				style={{ maxwidth: "540px", margin: "1cm", padding: "0.5cm" }}>
+				<div className="row border border-primary align-items-center">
+					<div className="col-md-4 border border-warning">
 						<Carousel fade>
 							<Carousel.Item>
 								<img
@@ -82,53 +85,53 @@ export const Detalles = () => {
 							</Carousel.Item>
 						</Carousel>
 					</div>
-				</div>
-				<div className="col-md-8" style={{ width: "16cm", marginLeft: "13cm", marginTop: "-7cm" }}>
-					<div className="card-body">
-						<h5 className="card-title">NOMBRE</h5>
-						<p className="card-text">
-							This is a wider card with supporting text below as a natural lead-in to additional content.
-							This content is a little bit longer. This is a wider card with supporting text below as a
-							natural lead-in to additional content. This content is a little bit longer. This is a wider
-							card with supporting text below as a natural lead-in to additional content. This content is
-							a little bit longer.
-						</p>
-						<div className="row align-items-center">
-							<div className="col">Dueñ@:</div>
-							<div className="col">E-mal:</div>
-							<div className="col">celular:</div>
-						</div>
-						<p className="rating">
-							<i className="rating__star far fa-star" />
-							<i className="rating__star far fa-star" />
-							<i className="rating__star far fa-star" />
-							<i className="rating__star far fa-star" />
-							<i className="rating__star far fa-star" />
-						</p>
+					<div className="col-md-8 border border-success">
+						{store.lugar.map((item, index) => {
+							return (
+								<div className="col-md-8" key={index}>
+									<div className="card-body">
+										<h5 className="card-title">{item.nombre}</h5>
+										<p className="card-text">{item.descripcion}</p>
+										<div className="container">
+											<div className="col">
+												<div className="col">Contacto:</div>
+												<div className="col">E-mail:</div>
+												<div className="col">Teléfono:</div>
+												<div className="col">Ubicación:</div>
+												<div className="col-3 col-sm-3">PetFriendly:</div>
+												<div className="col-3 col-sm-3">AccesoTransporte:</div>
+												<div className="col-3 col-sm-3">Baños:</div>
+												<div className="col-3 col-sm-3">Actividades:</div>
+												<div className="col-3 col-sm-3">Electricidad:</div>
+												<div className="col-3 col-sm-3">Familiar:</div> <br />
+											</div>
+										</div>
+
+										<div className="rating">
+											{/* onClick=
+				{() => actions.addFavorites(element.name, "nombre")}
+				type="button"> */}
+											<i className="rating__star far fa-star" />
+											<i className="rating__star far fa-star" />
+											<i className="rating__star far fa-star" />
+											<i className="rating__star far fa-star" />
+											<i className="rating__star far fa-star" />
+										</div>
+									</div>
+								</div>
+							);
+						})}
 					</div>
 				</div>
-				<div className="container">
-					<div className="row">
-						<div className="col-3 col-sm-3">petFriendly:</div>
-						<div className="col-3 col-sm-3">accesoTransporte:</div>
-						<div className="col-3 col-sm-3">baños:</div>
-						<div className="col-3 col-sm-3">actividades:</div>
-					</div>
-					<div className="row">
-						<div className="col-3 col-sm-3">electricidad:</div>
-						<div className="col-3 col-sm-3">familiar:</div>
-						<div className="col-3 col-sm-3">descripcion:</div>
-						<div className="col-3 col-sm-3">.col-6 .col-sm-4:</div>
-					</div>
-				</div>
-				<div>
-					<Link to="/homeUsuario">
-						<img
-							src="https://img1.picmix.com/output/stamp/normal/4/1/5/3/1743514_d26d4.gif"
-							style={{ width: "4cm", height: "3cm", marginLeft: "1cm" }}
-						/>
-					</Link>
-				</div>
+			</div>
+
+			<div className="mariposa">
+				<Link to="/homeUsuario">
+					<img
+						src="https://i.pinimg.com/originals/94/ef/8c/94ef8cbd183d0cb15829512cbd5a1015.gif"
+						style={{ width: "4cm", height: "3cm", marginLeft: "1cm", WebkitMaskPositionX: "2cm" }}
+					/>
+				</Link>
 			</div>
 		</div>
 	);

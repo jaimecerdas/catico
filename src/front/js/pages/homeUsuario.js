@@ -15,13 +15,13 @@ export const HomeUsuario = () => {
 			<div className="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2 ">
 				<div>{/* <People name={element.name} url={peoplePics[element.uid]} /> */}</div>
 				<div>
-					<Usuario text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." />
+					<Usuario />
 				</div>
 				<div>
-					<Usuario text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." />
+					<Usuario />
 				</div>
 				<div>
-					<Usuario text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." />
+					<Usuario />
 				</div>
 			</div>
 			<h1 style={{ paddingTop: "0.7cm" }}>San José</h1>
