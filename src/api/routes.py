@@ -63,10 +63,11 @@ def del_visitas():
 
 #POST Lugar
 @api.route('/addLugar', methods=['POST'])
+@jwt_required()
 def post_lugar():
-    #current_id = get_jwt_identity()
-    #user = User.query.get(current_id)
-    #user_email = user.email
+    current_id = get_jwt_identity()
+    empresario = Empresario.query.get(current_id)
+    empresario_email = empresario.email
     nombre = request.json.get("nombre", None)
     ubicacion = request.json.get("ubicacion", None)
     petFriendly = request.json.get("petFriendly", None)
@@ -81,7 +82,7 @@ def post_lugar():
     telefono =  request.json.get("telefono", None)
     # crea usuario nuevo
     new_lugar = Lugares()
-    #new_lugar.user.email = user.email
+    new_lugar.empresario_email = empresario_email
     new_lugar.nombre = nombre
     new_lugar.ubicacion = ubicacion
     new_lugar.petFriendly = petFriendly
@@ -97,7 +98,7 @@ def post_lugar():
     # crea registro nuevo en BBDD de 
     db.session.add(new_lugar)
     db.session.commit()
-    return jsonify({"msg": "El Lugar se creo con éxito"}), 200   
+    return jsonify({"msg": "El Lugar se creo con éxito"}), 200
 
 #GET Lugares
 @api.route('/getLugares', methods=['GET'])
@@ -105,6 +106,18 @@ def bring_visitas():
     alllugares = Lugares.query.all()
     alllugares = list(map(lambda x: Lugares.serialize(x), alllugares))
     return  jsonify(alllugares), 200
+
+#GET Lugares
+@api.route('/getMisLugares', methods=['GET'])
+@jwt_required()
+def bring_visitas2():
+    current_id = get_jwt_identity()
+    empresario = Empresario.query.get(current_id)
+    empresario_email = empresario.email
+    mislugares = Lugares.query.filter_by(empresario_email=empresario_email)
+    mislugares = list(map(lambda x: Lugares.serialize(x), mislugares))
+    return  jsonify(mislugares), 200
+
 #Falta hacerlo por usuario
 @api.route('/register', methods=['POST'])
 def register_user():

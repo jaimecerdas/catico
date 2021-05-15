@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents, DraggableMarker } from "react-leaflet";
 import { Context } from "../store/appContext";
 import { Mapa } from "../component/mapa";
 import { Redirect } from "react-router-dom";
