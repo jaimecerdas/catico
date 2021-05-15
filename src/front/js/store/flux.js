@@ -19,7 +19,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			my_token: [],
-			lugares: []
+			lugares: [],
+			misLugares: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -35,12 +36,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//console.log();
 			},
 			getLugares: () => {
-				fetch("https://3001-black-pelican-c1i84w2c.ws-us04.gitpod.io/api/getLugares")
+				fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/getLugares")
 					.then(res => res.json())
 					.then(async data => {
 						let arrayResults = data;
 						console.log(arrayResults);
 						setStore({ lugares: arrayResults });
+					});
+			},
+			getMisLugares: () => {
+				fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/getMisLugares")
+					.then(res => res.json())
+					.then(async data => {
+						let arrayResults = data;
+						console.log(arrayResults);
+						setStore({ misLugares: arrayResults });
 					});
 			},
 			getMessage: () => {

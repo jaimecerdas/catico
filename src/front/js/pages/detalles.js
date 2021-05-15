@@ -111,7 +111,7 @@ export const Detalles = props => {
 											{store.lugares[index].contacto}
 										</div>
 										<div className="col">
-											<strong>E-mail:</strong>
+											<strong>E-mail: </strong>
 											{store.lugares[index].email}
 										</div>
 										<div className="col">
