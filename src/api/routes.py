@@ -1,11 +1,24 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
+import os
 from flask import Flask, request, jsonify, url_for, Blueprint
 from .models import db, User, Visitas, Empresario, Lugares
 from api.utils import generate_sitemap, APIException
 api = Blueprint('api', __name__)
 
+from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity, create_access_token
+
+
+# Handle/serialize errors like a JSON object
+@api.errorhandler(APIException)
+def handle_invalid_usage(error):
+    return jsonify(error.to_dict()), error.status_code
+
+# generate sitemap with all your endpoints
+@api.route('/')
+def sitemap():
+    return generate_sitemap(app)
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
@@ -15,6 +28,63 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+#POST Visitas
+@api.route('/addVisitas', methods=['POST'])
+def post_visitas():
+
+    current_id = get_jwt_identity()
+    user = User.query.get(current_id)
+    user_email = user.email
+
+    visitas_nombre = request.json.get("visitas_nombre")
+
+
+    nueva_visita = Visitas()
+    nueva_visita.visitas_nombre = visitas_nombre
+    nueva_visita.user_email = user_email
+    # crea registro de nueva visita
+    db.session.add(nueva_visita)
+    db.session.commit()
+    return jsonify({"msg": "La Visita se registro exitosamente"}), 200
+
+#GET Visitas
+@api.route('/getVisitas', methods=['GET', 'POST'])
+def get_visitas():
+    current_id = get_jwt_identity()
+    user = User.query.get(current_id)
+    user_email = user.email
+
+    allvisitas = Visitas.query.filter_by(user_email=user_email)
+    allvisitas = list(map(lambda x: Visitas.serialize(x), allvisitas))
+
+    return  jsonify(allvisitas), 200
+
+#DELETE Visitas
+@api.route('/delVisitas', methods=['DELETE'])
+def del_visitas():
+
+    current_id = get_jwt_identity()
+    user = User.query.get(current_id)
+    user_email = user.email
+
+    visitas_name = request.json.get("visitas_name")
+    
+    delVisitas = Visitas.query.filter_by(user_email=user_email).filter_by(visitas_name=visitas_name).first()
+    db.session.delete(delvisitas)
+    db.session.commit()
+    return jsonify({"msg": "La visita se borro exitosamente"}), 400
+
+#GET Lugares
+@api.route('/getLugares', methods=['GET'])
+def bring_visitas():
+
+    alllugares = Lugares.query.all()
+    alllugares = list(map(lambda x: Lugares.serialize(x), alllugares))
+
+    return  jsonify(alllugares), 200
+
+#Falta hacerlo por usuario
 
 @api.route('/register', methods=['POST'])
 def register_user():
@@ -26,9 +96,9 @@ def register_user():
 
     # valida si estan vacios los ingresos
     if email is None:
-        return jsonify({"msg": "No email was provided"}), 400
+        return jsonify({"msg": "No se proveyo email"}), 400
     if password is None:
-        return jsonify({"msg": "No password was provided"}), 400
+        return jsonify({"msg": "No se proveyo password"}), 400
     if pin is None:
         return jsonify({"msg": "No se proveyo un PIN"}), 400
     if nombre is None:
@@ -70,7 +140,8 @@ def register_user():
             db.session.commit()
             return jsonify({"msg": "El Empresario se creo con éxito"}), 200
 
-@api.route('/login', methods=['POST']) 
+@api.route('/login', methods=['GET', 'POST']) 
+# @jwt_required()
 def login():
     email = request.json.get("email", None)
     password = request.json.get("password", None)
@@ -90,3 +161,26 @@ def login():
         # crear token
         my_token = create_access_token(identity=user.id)
         return jsonify({"token": my_token})
+
+@api.route('/loginempresario', methods=['GET', 'POST']) 
+# @jwt_required()
+def loginempresario():
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+
+    # valida si estan vacios los ingresos
+    if email is None:
+        return jsonify({"msg": "No email was provided"}), 400
+    if password is None:
+        return jsonify({"msg": "No password was provided"}), 400
+
+    # para proteger contraseñas usen hashed_password
+    # busca usuario en BBDD
+    user = User.query.filter_by(email=email, password=password).first()
+    if user is None:
+        return jsonify({"msg": "Invalid username or password"}), 401
+    else:
+        # crear token
+        my_token = create_access_token(identity=user.id)
+        return jsonify({"token": my_token})
+
