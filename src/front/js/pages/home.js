@@ -1,100 +1,146 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
-import "../../styles/demo.scss";
-import { Usuario } from "../pages/usuario";
 
+import "../../styles/principal.scss";
+import { Usuario } from "../pages/usuario";
+import { Carousel, Jumbotron, Button } from "react-bootstrap";
 export const Home = () => {
 	const { store, actions } = useContext(Context);
-
+	//border-primary
 	return (
-		// <div className="container">
-		// 	<div className="justify-content-start">
-		// 		<div className="card border-primary mb-3" style={{ maxWidth: "25rem", marginLeft: "2cm" }}>
-		// 			<div className="card-header">Header</div>
-		// 			<img
-		// 				src="https://i.ibb.co/s5g3wN6/Summer-Camp-amico.png"
-		// 				alt="Summer-Camp-amico"
-		// 				border="0"
-		// 				style={{ width: "3cm" }}
-		// 			/>
-		// 			<div className="card-body text-primary">
-		// 				<p className="card-text">
-		// 					Some quick example text to build on the card title and make up the bulk of the card content.
-		// 				</p>
-		// 			</div>
-		// 		</div>
-
-		// 		<div className="card border-primary mb-3" style={{ maxWidth: "25rem" }}>
-		// 			<div className="card-header">Header</div>
-		// 			<img
-		// 				src="https://i.ibb.co/HHNz6gR/Mobile-Marketing-pana.png"
-		// 				alt="Mobile-Marketing-pana"
-		// 				border="0"
-		// 				style={{ width: "3cm" }}
-		// 			/>
-		// 			<div className="card-body text-primary">
-		// 				<p className="card-text">
-		// 					Some quick example text to build on the card title and make up the bulk of the card content.
-		// 				</p>
-		// 			</div>
-		// 		</div>
-		// 		<div className="card border-primary mb-3" style={{ maxWidth: "25rem", marginLeft: "2cm" }}>
-		// 			<div className="card-header">Header</div>
-		// 			<img
-		// 				src="https://i.ibb.co/tpjf30G/Collaboration-cuate.png"
-		// 				alt="Collaboration-cuate"
-		// 				border="0"
-		// 				style={{ width: "3cm" }}
-		// 			/>
-		// 			<div className="card-body text-primary">
-		// 				<p className="card-text">
-		// 					Some quick example text to build on the card title and make up the bulk of the card content.
-		// 				</p>
-		// 			</div>
-		// 		</div>
-		// 	</div>
-
-		// 	<div
-		// 		className="row justify-content-end"
-		// 		style={{ marginTop: "-22cm", marginLeft: "70%", maxWidth: "10rem" }}>
-		// 		<div>
-		// 			<Usuario
-		// 				text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
-		// 				style={{ maxWidth: "10rem" }}
-		// 			/>
-		// 		</div>
-		// 	</div>
-		// </div>
 		<div className="container">
-			<div
-				className="right-content"
-				style={{
-					width: "12cm",
-					marginLeft: "2cm",
-					marginTop: "2cm",
-					backgroundImage: `url("https://www.govisitcostarica.co.cr/images/photos/mob-arenal-volcano-smoking.jpg")`
-				}}>
-				<div className="main-content">
-					<h1 className="main-tittle" style={{ color: "brown" }}>
-						Camping Tico
-					</h1>
-					<p className="text-description padding-bottom-text">
-						Lorem ipsum dolor sit amet, consectetur lobortis adipiscing elit. Mauris vitae nunc sit amet
-						libero congue malesuada. Morbi suscipit congue.
-					</p>
-					<button type="button" className="btn btn-outline-success">
-						Success
-					</button>
+			<div className="border border-warning d-flex justify-content-center align-middle mt-5">
+				<div className="col-md-6 border border-warning ">
+					<Carousel fade>
+						<Carousel.Item>
+							<img
+								className="d-block w-100 "
+								src="https://photo620x400.mnstatic.com/1d3dc3ff4d96add7c0d4d49b1f74d8b7/playa-manzanillo.jpg"
+								alt="First slide"
+							/>
+							<Carousel.Caption>
+								<h3>First slide label</h3>
+								<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+							</Carousel.Caption>
+						</Carousel.Item>
+						<Carousel.Item>
+							<img
+								className="d-block w-100"
+								src="https://www.govisitcostarica.co.cr/images/photos/mob-under-wild-almond-tree-manzanillo-caribbean.jpg"
+								alt="Second slide"
+							/>
+							<Carousel.Caption>
+								<h3>Second slide label</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+							</Carousel.Caption>
+						</Carousel.Item>
+						<Carousel.Item>
+							<img
+								className="d-block w-100"
+								src="https://photo620x400.mnstatic.com/1d3dc3ff4d96add7c0d4d49b1f74d8b7/playa-manzanillo.jpg"
+								alt="Third slide"
+							/>
+							<Carousel.Caption>
+								<h3>Third slide label</h3>
+								<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+							</Carousel.Caption>
+						</Carousel.Item>
+					</Carousel>
+				</div>
+				<div className="row border border-primary align-items-center justify-content-center">
+					<div className="col-md-12 border border-warning ">
+						<div className="col-md-12 border">
+							<h1>
+								CampingTico
+								<i
+									className="fas fa-leaf"
+									style={({ color: "rgb(106 181 123)" }, { color: "rgb(106 181 123)" })}
+								/>
+							</h1>
+							<p>Bienvenido a CampingTico! Tu lugar de Camping de Costa Rica.</p>
+							<p>
+								<Button
+									className="btn-light"
+									variant="primary"
+									href="#acampar"
+									id="boton"
+									style={{ backgroundColor: "rgb(106 181 123)" }}>
+									Más información
+								</Button>
+							</p>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div className="left-content">
-				<div className="img-background-container" />
-				<img
-					className="img-camaleon"
-					src="https://kanakyterraria.com/wp-content/uploads/2016/09/PSedit-120116-CM-6971-21-e1474634959167.jpg"
-					style={{ marginLeft: "20cm", marginBottom: "-8cm" }}
-				/>
+			<div className="border border-warning d-flex justify-content-center align-middle mt-5">
+				<div className="row border border-primary align-items-center justify-content-center">
+					<div>
+						<h1>
+							<i className="fas fa-leaf" style={{ color: "rgb(106 181 123)" }} />
+						</h1>
+					</div>
+				</div>
+			</div>
+			<div className="border border-warning d-flex justify-content-center align-middle mt-5" id="acampar">
+				<div className="col-md-12 border border-warning ">
+					<div>
+						<h1>¿Porqué acampar?</h1>
+						<p className="text-description padding-bottom-text" style={{ color: "rgb(106 181 123)" }}>
+							Ir a acampar es una de las actividades más divertidas que podés hacer. Salir y disfrutar,
+							conocer, explorar y vivir para conectarte con la naturaleza y tener aventuras nuevas. Tantos
+							lugares increíbles que visitar es lo que nos ha motivado a ofrecer a todas aquellas personas
+							amantes del camping, un punto de encuentro con todos esos lugares mágicos que están ahí,
+							esperando a ser visitados.
+						</p>
+						<p className="text-description padding-bottom-text" style={{ color: "rgb(106 181 123)" }}>
+							Este es un esfuerzo para que nos salgamos de la rutina y disfrutemos del camino, del momento
+							y del lugar que hacen que la vida se llene de experiencias e historias que compartir.
+							Acampar al aire libre es salud mental, el espíritu se relaja y se experimenta la libertad
+							que el contacto con la naturaleza nos ofrece.
+						</p>
+						<p className="text-description padding-bottom-text" style={{ color: "rgb(106 181 123)" }}>
+							Ir de camping para disfrutar los paisajes de las montañas, volcanes, playas, valles y
+							llanuras es lo que nos mueve. Nuestro principal objetivo es ser una guía para mostrar esos
+							espacios abiertos maravillosos a todos esos viajeros y viajeras que están ahí, esperando por
+							su nueva aventura.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div className="border border-warning d-flex justify-content-center align-middle mt-5">
+				<div className="row border border-primary align-items-center justify-content-center">
+					<div>
+						<h1>
+							<i className="fas fa-leaf" style={{ color: "rgb(106 181 123)" }} />
+						</h1>
+					</div>
+				</div>
+			</div>
+			<div className="border border-warning d-flex justify-content-center align-middle mt-5 mb-5">
+				<div className="col-md-12 border border-warning ">
+					<div>
+						<h1>¿Quienes somos?</h1>
+						<p className="text-description padding-bottom-text" style={{ color: "rgb(106 181 123)" }}>
+							Ir a acampar es una de las actividades más divertidas que podés hacer. Salir y disfrutar,
+							conocer, explorar y vivir para conectarte con la naturaleza y tener aventuras nuevas. Tantos
+							lugares increíbles que visitar es lo que nos ha motivado a ofrecer a todas aquellas personas
+							amantes del camping, un punto de encuentro con todos esos lugares mágicos que están ahí,
+							esperando a ser visitados.
+						</p>
+						<p className="text-description padding-bottom-text" style={{ color: "rgb(106 181 123)" }}>
+							Este es un esfuerzo para que nos salgamos de la rutina y disfrutemos del camino, del momento
+							y del lugar que hacen que la vida se llene de experiencias e historias que compartir.
+							Acampar al aire libre es salud mental, el espíritu se relaja y se experimenta la libertad
+							que el contacto con la naturaleza nos ofrece.
+						</p>
+						<p className="text-description padding-bottom-text" style={{ color: "rgb(106 181 123)" }}>
+							Ir de camping para disfrutar los paisajes de las montañas, volcanes, playas, valles y
+							llanuras es lo que nos mueve. Nuestro principal objetivo es ser una guía para mostrar esos
+							espacios abiertos maravillosos a todos esos viajeros y viajeras que están ahí, esperando por
+							su nueva aventura.
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

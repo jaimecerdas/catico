@@ -1,14 +1,25 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-//import { Button } from "react-bootstrap";
 
+import { Link, useParams } from "react-router-dom";
+import { Carousel, Jumbotron, Button } from "react-bootstrap";
 import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
 
 // CAMBIAR LA HOJA DE ESTILO ACA
-import "../../styles/demo.scss";
+import "../../styles/estrellas.scss";
 
-export const Detalles = () => {
+export const Detalles = props => {
 	const { store, actions } = useContext(Context);
+	const params = useParams();
+	let index = params.theid;
+
+	useEffect(() => {
+		actions.getLugares();
+		//actions.getToken();
+		//console.log(store.people);
+	}, []);
+
+	console.log(index);
 
 	const ratingStars = [...document.getElementsByClassName("rating__star")];
 	const ratingResult = document.querySelector(".rating__result");
@@ -36,97 +47,137 @@ export const Detalles = () => {
 	}
 
 	function printRatingResult(result, num = 0) {
-		// result.textContent = `${num}/5`; ME TIRA ERROR Y NO SÉ PARA QUÉ SIRVE, AL COMENTARLO ME FUNCIONÓ
+		// result.textContent = [];
 	}
 
 	executeRating(ratingStars, ratingResult);
-
 	return (
-		<div
-			className="jumbotron"
-			style={{
-				backgroundImage: `url("https://primercanjedeuda.org/wp-content/uploads/2016/05/Nature-Costa-Rica-bk.jpg")`,
-				backgroundSize: "cover"
-			}}>
-			<h1 className="display-4" style={{ color: "white" }}>
-				Nombre del Camping
-			</h1>{" "}
-			<hr className="my-4" />
-			<div className="card mb-3" style={{ width: "25cm", height: "8.5cm" }}>
-				<div className="row g-0">
-					<div className="col-md-4">
-						<img
-							src="https://media-cdn.tripadvisor.com/media/photo-p/13/ab/fa/93/nature-costa-rica-tours.jpg"
-							style={{ width: "8cm", height: "8cm" }}
-							alt="..."
-						/>
+		<div ClassName="container">
+			<div
+				className="card mb-3 border border-primary align-middle"
+				style={{ maxwidth: "540px", margin: "1cm", padding: "0.5cm" }}>
+				<div className="row border border-primary align-items-center">
+					<div className="col-md-4 border border-warning">
+						<Carousel fade>
+							<Carousel.Item>
+								<img
+									className="d-block w-100 "
+									src="https://photo620x400.mnstatic.com/1d3dc3ff4d96add7c0d4d49b1f74d8b7/playa-manzanillo.jpg"
+									alt="First slide"
+								/>
+								<Carousel.Caption />
+							</Carousel.Item>
+							<Carousel.Item>
+								<img
+									className="d-block w-100 "
+									src="https://photo620x400.mnstatic.com/1d3dc3ff4d96add7c0d4d49b1f74d8b7/playa-manzanillo.jpg"
+									alt="First slide"
+								/>
+								<Carousel.Caption />
+							</Carousel.Item>
+
+							<Carousel.Item>
+								<img
+									className="d-block w-100"
+									src="https://www.govisitcostarica.co.cr/images/photos/mob-under-wild-almond-tree-manzanillo-caribbean.jpg"
+									alt="Second slide"
+								/>
+								<Carousel.Caption />
+							</Carousel.Item>
+							<Carousel.Item>
+								<img
+									className="d-block w-100"
+									src="https://photo620x400.mnstatic.com/1d3dc3ff4d96add7c0d4d49b1f74d8b7/playa-manzanillo.jpg"
+									alt="Third slide"
+								/>
+								<Carousel.Caption />
+							</Carousel.Item>
+						</Carousel>
 					</div>
-					<div className="col-md-8">
-						<div className="card-body">
-							<h5 className="" />
-							<p className="card-text">
-								Este es un pequeño emprendimiento que busca brindar un espacio seguro para que pueda
-								venir con su familia y pasar un momento bonito.
-							</p>
+					<div className="col-md-8 border border-success">
+						<div className="col-md-8" key={index}>
+							<div className="card-body">
+								<h5 className="card-title">{store.lugares[index].nombre}</h5>
+								<p className="card-text">
+									<tr>
+										<strong>¿Quiénes somos?</strong>
+									</tr>
+									{store.lugares[index].descripcion}
+								</p>
+								<div className="container">
+									<div className="col">
+										<div className="col">
+											<strong>Contacto:</strong>
+											{store.lugares[index].contacto}
+										</div>
+										<div className="col">
+											<strong>E-mail:</strong>
+											{store.lugares[index].email}
+										</div>
+										<div className="col">
+											<strong>Teléfono:</strong>
+											{store.lugares[index].telefono}
+										</div>
+										<div className="col">
+											<strong>Ubicación:</strong>
+											{store.lugares[index].ubicacion}
+										</div>
+										<div className="col-sm">
+											<strong>Pet-Friendly:</strong>
+											{store.lugares[index].petfriendly}
+										</div>
+										<div className="col-sm">
+											<strong>Acceso Transporte:</strong>
+											{store.lugares[index].accesotransporte}
+										</div>
+										<div className="col-sm">
+											<strong>Baños:</strong>
+											{store.lugares[index].baños}
+										</div>
+										<div className="col-sm">
+											<strong>Actividades extras:</strong>
+											{store.lugares[index].actividades}
+										</div>
+										<div className="col-sm">
+											<strong>Electricidad:</strong>
+											{store.lugares[index].electricidad}
+										</div>
+										<div className="col-sm">
+											<strong>Familiar:</strong>
+											{store.lugares[index].ambiente}
+										</div>{" "}
+										<br />
+									</div>
+								</div>
+
+								<div className="rating">
+									{/* onClick=
+				{() => actions.addFavorites(element.name, "nombre")}
+				type="button"> */}
+									<i className="rating__star far fa-star" />
+									<i className="rating__star far fa-star" />
+									<i className="rating__star far fa-star" />
+									<i className="rating__star far fa-star" />
+									<i className="rating__star far fa-star" />
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div className="informacion" style={{ color: "yellow" }}>
-				<tr>
-					<i className="Ubicación" />
-					Ubicación:
-				</tr>
-				<tr>
-					<i className="Correo" />
-					Correo:
-				</tr>
-				<tr>
-					<i className="Contacto" />
-					Contacto:
-				</tr>
-			</div>
-			<div className="container" style={{ height: "2cm", padding: "0.5cm", color: "yellow" }}>
-				<div className="row">
-					<div className="col-sm-2">
-						<strong>nombre: </strong>
-						{/* {store.people[params.theid].name} */}
-					</div>
-					<div className="col-sm-">
-						<strong>ubicación: </strong>
-					</div>
-					<div className="col-sm-">
-						<strong>petFriendly: </strong>
-					</div>
-					<div className="col-sm-">
-						<strong>accesoTransporte: </strong>
-					</div>
-					<div className="col-sm-">
-						<strong>baños: </strong>
-					</div>
-					<div className="col-sm-">
-						<strong>Actividades:</strong>
-					</div>
-					<div className="col-sm-">
-						<strong>electricidad:</strong>
-					</div>
-					<div className="col-sm-">
-						<strong>descripcion:</strong>
-					</div>
-				</div>
-			</div>
-			<div className="rating">
-				<i className="rating__star far fa-star" />
-				<i className="rating__star far fa-star" />
-				<i className="rating__star far fa-star" />
-				<i className="rating__star far fa-star" />
-				<i className="rating__star far fa-star" />
-			</div>
-			<div>
-				<a className="btn btn-primary" href="/homeUsuario" role="button">
-					Back home
-				</a>
+
+			<div className="mariposa">
+				<Link to="/homeUsuario">
+					<img
+						src="https://i.pinimg.com/originals/94/ef/8c/94ef8cbd183d0cb15829512cbd5a1015.gif"
+						style={{ width: "4cm", height: "3cm", marginLeft: "1cm", WebkitMaskPositionX: "2cm" }}
+					/>
+				</Link>
 			</div>
 		</div>
 	);
+};
+
+Detalles.propTypes = {
+	id: PropTypes.string
 };

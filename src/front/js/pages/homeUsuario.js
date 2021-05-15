@@ -1,44 +1,44 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Usuario } from "../pages/usuario";
-
 import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
 
-import "../../styles/demo.scss";
+import "../../styles/estrellas.scss";
 
 export const HomeUsuario = () => {
 	const { store, actions } = useContext(Context);
 
+	useEffect(() => {
+		actions.getLugares();
+		//actions.getToken();
+		//console.log(store.people);
+	}, []);
+
 	return (
-		<div className="container ">
-			<h1 style={{ paddingTop: "0.7cm" }}>Limón</h1>
-			<div className="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2 ">
-				<div>{/* <People name={element.name} url={peoplePics[element.uid]} /> */}</div>
-				<div>
-					<Usuario text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." />
-				</div>
-				<div>
-					<Usuario text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." />
-				</div>
-				<div>
-					<Usuario text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." />
-				</div>
+		<div className="container">
+			<h1 style={{ paddingTop: "0.7cm" }}>
+				CampingTico
+				<i className="fas fa-leaf" style={{ color: "rgb(106 181 123)" }} />
+			</h1>
+			<div className="row  mt-4 pb-4 pt-2">
+				{store.lugares.map((item, index) => {
+					return (
+						<Usuario
+							key={index}
+							id={index}
+							nombre={item.nombre}
+							descripcion={item.descripcion}
+							electricidad={item.electricidad}
+							baños={item.baños}
+							petfriendly={item.petfriendly}
+						/>
+					);
+				})}
 			</div>
-			<h1 style={{ paddingTop: "0.7cm" }}>San José</h1>
-			<div className="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
-				<div>
-					<Usuario text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." />
-				</div>
-				<div>
-					<Usuario text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." />
-				</div>
-				<div>
-					<Usuario text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." />
-				</div>
-			</div>
-			<a className="btn btn-primary" href="/" role="button">
-				Back home
-			</a>
+			<Link to="/">
+				<button className="btn btn-primary my-5">Back home</button>
+			</Link>
 		</div>
 	);
 };
