@@ -21,7 +21,7 @@ export const HomeUsuario = () => {
 				CampingTico
 				<i className="fas fa-leaf" style={{ color: "rgb(106 181 123)" }} />
 			</h1>
-			<div className="row  mt-4 pb-4 pt-2">
+			<div className="row  mt-4 pb-4 pt-2" style={{ justifyContent: "center" }}>
 				{store.lugares.map((item, index) => {
 					return (
 						<Usuario
@@ -31,7 +31,7 @@ export const HomeUsuario = () => {
 							descripcion={item.descripcion}
 							electricidad={item.electricidad}
 							baños={item.baños}
-							petfriendly={item.petfriendly}
+							petFriendly={item.petFriendly}
 						/>
 					);
 				})}

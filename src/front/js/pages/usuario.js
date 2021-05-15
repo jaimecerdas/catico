@@ -35,7 +35,7 @@ export const Usuario = props => {
 					</li>
 					<li className="list-group-item">
 						Petfriendly:
-						{props.petfriendly}
+						{props.petFriendly}
 					</li>
 				</div>
 			</div>
@@ -59,5 +59,5 @@ Usuario.propTypes = {
 	descripcion: PropTypes.string,
 	electricidad: PropTypes.string,
 	baños: PropTypes.string,
-	petfriendly: PropTypes.string
+	petFriendly: PropTypes.string
 };

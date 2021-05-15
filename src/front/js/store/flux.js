@@ -35,7 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//console.log();
 			},
 			getLugares: () => {
-				fetch("https://3001-black-pelican-c1i84w2c.ws-us04.gitpod.io/api/getLugares")
+				fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/getLugares")
 					.then(res => res.json())
 					.then(async data => {
 						let arrayResults = data;
