@@ -4,9 +4,9 @@ import ScrollToTop from "./component/scrollToTop";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Home } from "./pages/home";
-import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { Login } from "./pages/login";
+import { Loginempresario } from "./pages/loginempresario";
 import { Historial } from "./pages/historial";
 import { Detalles } from "./pages/detalles";
 import { Register } from "./pages/register";
@@ -14,10 +14,12 @@ import { Recuperacion } from "./pages/recuperacion";
 import { HomeEmpresario } from "./pages/homeEmpresario";
 import { HomeUsuario } from "./pages/homeUsuario";
 import { Usuario } from "./pages/usuario";
+import { CrearLugar } from "./pages/crearLugar";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+
 import { homeEmpresario } from "./pages/homeEmpresario";
 
 //create your first component
@@ -35,8 +37,8 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/demo">
-							<Demo />
+						<Route exact path="/crearLugar">
+							<CrearLugar />
 						</Route>
 						<Route exact path="/homeEmpresario">
 							<HomeEmpresario />
@@ -49,6 +51,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/login">
 							<Login />
+						</Route>
+						<Route exact path="/loginempresario">
+							<Loginempresario />
 						</Route>
 						<Route exact path="/register">
 							<Register />
@@ -64,9 +69,6 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/recuperacion">
 							<Recuperacion />
-						</Route>
-						<Route>
-							<h1>Not found!</h1>
 						</Route>
 					</Switch>
 					<Footer />

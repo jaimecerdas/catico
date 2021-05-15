@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 
-export const Login = () => {
+export const Loginempresario = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [auth, setAuth] = useState(false);
-	const [tipo, setTipo] = useState("");
 
 	const handleSubmit = e => {
 		e.preventDefault();
 
 		const body = {
 			email: email,
-			password: password,
-			tipo: tipo
+			password: password
 		};
 
 		// fetch de LOGIN
-		fetch("https://3001-pink-asp-ngdvnli9.ws-us04.gitpod.io/api/login", {
+		fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/login", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
@@ -27,37 +25,18 @@ export const Login = () => {
 			.then(res => res.json())
 			.then(data => {
 				console.log(data);
-				let message = data.msg;
-				console.log(message);
-				if (message === "Login successfull") {
-					// añadir token a session
-					sessionStorage.setItem("my_token", data.token);
-					//da authorizacion
-					setAuth(true);
-				} else {
-					window.alert("El ingreso falló: " + message);
-				}
+				// añadir token a session
+				sessionStorage.setItem("my_token", data.token);
+				// let token = sessionStorage.getItem("my_token")
+				setAuth(true);
 			})
 			.catch(err => console.log(err));
 	};
 
 	return (
 		<div className="mx-auto pt-5">
-			<h1>Login</h1>
+			<h1>LoginEmpresario</h1>
 			<form onSubmit={handleSubmit} style={{ width: "500px" }}>
-				<div>
-					<div className="form-group">
-						<label htmlFor="exampleFormControlSelect4">Elige tu tipo de usuario</label>
-						<select
-							className="form-control"
-							id="exampleFormControlSelect1"
-							onChange={e => setTipo(e.target.value)}>
-							<option value="">Selecciona tipo de cuenta</option>
-							<option value="usuario">Usuario</option>
-							<option value="empresario">Empresario</option>
-						</select>
-					</div>
-				</div>
 				<div className="mb-3">
 					<label htmlFor="exampleInputEmail1" className="form-label">
 						Correo electrónico
@@ -86,9 +65,7 @@ export const Login = () => {
 					Ingresar
 				</button>
 			</form>
-
-			{tipo === "usuario" && auth == true ? <Redirect to="/homeUsuario" /> : null}
-			{tipo === "empresario" && auth == true ? <Redirect to="/homeEmpresario" /> : null}
+			{auth ? <Redirect to="/homeEmpresario" /> : null}
 		</div>
 	);
 };
