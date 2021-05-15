@@ -12,9 +12,6 @@ export const Navbar = () => {
 				</span>
 			</Link>
 			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-light mx-2">Demo</button>
-				</Link>
 				<Link to="/homeEmpresario">
 					<button className="btn btn-light mx-2">HomeEmpresario</button>
 				</Link>
@@ -27,8 +24,8 @@ export const Navbar = () => {
 				<Link to="/login">
 					<button className="btn btn-light mx-2">Login</button>
 				</Link>
-				<Link to="/loginempresario">
-					<button className="btn btn-light mx-2">Loginempresario</button>
+				<Link to="/crearLugar">
+					<button className="btn btn-light mx-2">CrearLugar</button>
 				</Link>
 				<Link to="/recuperacion">
 					<button className="btn btn-light mx-2">Recuperacion</button>
@@ -38,9 +35,6 @@ export const Navbar = () => {
 				</Link>
 				<Link to="/detalles">
 					<button className="btn btn-light mx-2">Detalles</button>
-				</Link>
-				<Link to="/mapa">
-					<button className="btn btn-light mx-2">Mapa</button>
 				</Link>
 				<Link to="/usuario">
 					<button className="btn btn-primary">usuario</button>

@@ -2,15 +2,27 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 
 export const Register = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [pin, setPin] = useState("");
-	const [tipo, setTipo] = useState("");
-	const [nombre, setNombre] = useState("");
+	const [email, setEmail] = useState(null);
+	const [password, setPassword] = useState(null);
+	const [pin, setPin] = useState(null);
+	const [tipo, setTipo] = useState(null);
+	const [nombre, setNombre] = useState(null);
 	const [auth, setAuth] = useState(false);
 
 	const handleSubmit = e => {
 		e.preventDefault();
+
+		if (nombre === null) {
+			window.alert("Por favor revisar la información. No ingresó el campo: nombre");
+		} else if (password === null) {
+			window.alert("Por favor revisar la información. No ingresó el campo: password");
+		} else if (email === null) {
+			window.alert("Por favor revisar la información. No ingresó el campo: email");
+		} else if (pin === null) {
+			window.alert("Por favor revisar la información. No ingresó el campo: pin");
+		} else if (tipo === null) {
+			window.alert("Por favor revisar la información. No ingresó el campo: tipo de usuario");
+		}
 
 		const body = {
 			email: email,
@@ -21,7 +33,7 @@ export const Register = () => {
 		};
 
 		// fetch de REGISTER
-		fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/register", {
+		fetch("https://3001-pink-asp-ngdvnli9.ws-us04.gitpod.io/api/register", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
