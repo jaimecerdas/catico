@@ -1,14 +1,24 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Carousel, Jumbotron, Button } from "react-bootstrap";
 import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
 
 // CAMBIAR LA HOJA DE ESTILO ACA
 import "../../styles/estrellas.scss";
 
-export const Detalles = () => {
+export const Detalles = props => {
 	const { store, actions } = useContext(Context);
-	// const params = useParams();
+	const params = useParams();
+	let index = params.theid;
+
+	useEffect(() => {
+		actions.getLugares();
+		//actions.getToken();
+		//console.log(store.people);
+	}, []);
+
+	console.log(index);
 
 	const ratingStars = [...document.getElementsByClassName("rating__star")];
 	const ratingResult = document.querySelector(".rating__result");
@@ -40,8 +50,6 @@ export const Detalles = () => {
 	}
 
 	executeRating(ratingStars, ratingResult);
-	console.log("midata", store.lugar);
-
 	return (
 		<div ClassName="container">
 			<div
@@ -86,77 +94,73 @@ export const Detalles = () => {
 						</Carousel>
 					</div>
 					<div className="col-md-8 border border-success">
-						{store.lugar.map((item, index) => {
-							return (
-								<div className="col-md-8" key={index}>
-									<div className="card-body">
-										<h5 className="card-title">{item.nombre}</h5>
-										<p className="card-text">
-											<tr>
-												<strong>¿Quiénes somos?</strong>
-											</tr>
-											{item.descripcion}
-										</p>
-										<div className="container">
-											<div className="col">
-												<div className="col">
-													<strong>Contacto:</strong>
-													{item.contacto}
-												</div>
-												<div className="col">
-													<strong>E-mail:</strong>
-													{item.email}
-												</div>
-												<div className="col">
-													<strong>Teléfono:</strong>
-													{item.telefono}
-												</div>
-												<div className="col">
-													<strong>Ubicación:</strong>
-													{item.ubicacion}
-												</div>
-												<div className="col-sm">
-													<strong>Pet-Friendly:</strong>
-													{item.petfriendly}
-												</div>
-												<div className="col-sm">
-													<strong>Acceso Transporte:</strong>
-													{item.accesotransporte}
-												</div>
-												<div className="col-sm">
-													<strong>Baños:</strong>
-													{item.banos}
-												</div>
-												<div className="col-sm">
-													<strong>Actividades extras:</strong>
-													{item.actividades}
-												</div>
-												<div className="col-sm">
-													<strong>Electricidad:</strong>
-													{item.electricidad}
-												</div>
-												<div className="col-sm">
-													<strong>Familiar:</strong>
-													{item.familiar}
-												</div>{" "}
-												<br />
-											</div>
+						<div className="col-md-8" key={index}>
+							<div className="card-body">
+								<h5 className="card-title">{store.lugares[index].nombre}</h5>
+								<p className="card-text">
+									<tr>
+										<strong>¿Quiénes somos?</strong>
+									</tr>
+									{store.lugares[index].descripcion}
+								</p>
+								<div className="container">
+									<div className="col">
+										<div className="col">
+											<strong>Contacto:</strong>
+											{store.lugares[index].contacto}
 										</div>
-
-										<div className="rating">
-											{/* onClick=
-				{() => actions.addFavorites(element.name, "nombre")}
-				type="button"> */}
-											<i className="rating__star far fa-star" />
-											<i className="rating__star far fa-star" />
-											<i className="rating__star far fa-star" />
-											<i className="rating__star far fa-star" />
-											<i className="rating__star far fa-star" />
+										<div className="col">
+											<strong>E-mail:</strong>
+											{store.lugares[index].email}
 										</div>
+										<div className="col">
+											<strong>Teléfono:</strong>
+											{store.lugares[index].telefono}
+										</div>
+										<div className="col">
+											<strong>Ubicación:</strong>
+											{store.lugares[index].ubicacion}
+										</div>
+										<div className="col-sm">
+											<strong>Pet-Friendly:</strong>
+											{store.lugares[index].petfriendly}
+										</div>
+										<div className="col-sm">
+											<strong>Acceso Transporte:</strong>
+											{store.lugares[index].accesotransporte}
+										</div>
+										<div className="col-sm">
+											<strong>Baños:</strong>
+											{store.lugares[index].baños}
+										</div>
+										<div className="col-sm">
+											<strong>Actividades extras:</strong>
+											{store.lugares[index].actividades}
+										</div>
+										<div className="col-sm">
+											<strong>Electricidad:</strong>
+											{store.lugares[index].electricidad}
+										</div>
+										<div className="col-sm">
+											<strong>Familiar:</strong>
+											{store.lugares[index].ambiente}
+										</div>{" "}
+										<br />
 									</div>
 								</div>
-							);
-						})}
+
+								<div className="rating">
+									{/* onClick=
+				{() => actions.addFavorites(element.name, "nombre")}
+				type="button"> */}
+									<i className="rating__star far fa-star" />
+									<i className="rating__star far fa-star" />
+									<i className="rating__star far fa-star" />
+									<i className="rating__star far fa-star" />
+									<i className="rating__star far fa-star" />
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -171,4 +175,8 @@ export const Detalles = () => {
 			</div>
 		</div>
 	);
+};
+
+Detalles.propTypes = {
+	id: PropTypes.string
 };

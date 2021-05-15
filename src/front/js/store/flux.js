@@ -17,27 +17,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 					actvidades: "caminata por senderos",
 					familiar: "si"
 				}
-			]
-			// 	message: null,
-			// 	demo: [
-			// 		{
-			// 			title: "FIRST",
-			// 			background: "white",
-			// 			initial: "white"
-			// 		},
-			// // 		{
-			// // 			title: "SECOND",
-			// 			background: "white",
-			// 			initial: "white"
-			// 		}
-			// 	]
+			],
+			my_token: [],
+			lugares: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-
+			getToken: () => {
+				let my_tokenUnique = sessionStorage.getItem("my_token");
+				//console.log();
+				setStore({ my_token: my_tokenUnique });
+				const store = getStore();
+				let test = store.my_token;
+				//console.log();
+			},
+			getLugares: () => {
+				fetch("https://3001-black-pelican-c1i84w2c.ws-us04.gitpod.io/api/getLugares")
+					.then(res => res.json())
+					.then(async data => {
+						let arrayResults = data;
+						console.log(arrayResults);
+						setStore({ lugares: arrayResults });
+					});
+			},
 			getMessage: () => {
 				// fetching data from the backend
 				fetch(process.env.BACKEND_URL + "/api/hello")
