@@ -1,23 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			lugar: [
-				{
-					nombre: "Playita",
-					petfriendly: "si",
-					electricidad: "si",
-					descripcion:
-						"En este lugar podrá encontrar un lugar tranquilo para disfrutar con su familia y mascotas",
-					banos: "si",
-					contacto: "Pamela Contreras",
-					email: "pame@gmail.com",
-					telefono: "123456",
-					ubicacion: "Siquirres, 100 metros norte de la plaza de deportes",
-					accesotransporte: "si",
-					actvidades: "caminata por senderos",
-					familiar: "si"
-				}
-			],
 			my_token: [],
 			lugares: [],
 			misLugares: []
@@ -29,14 +12,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getToken: () => {
 				let my_tokenUnique = sessionStorage.getItem("my_token");
-				//console.log();
-				setStore({ my_token: my_tokenUnique });
 				const store = getStore();
-				let test = store.my_token;
-				//console.log();
+				setStore({ my_token: my_tokenUnique });
 			},
-			getLugares: () => {
-				fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/getLugares")
+			getMisLugares: () => {
+				let my_tokenUnique = sessionStorage.getItem("my_token");
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+				myHeaders.append("Authorization", "Bearer " + my_tokenUnique);
+				myHeaders.append("Content-Type", "application/json");
+				fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/getMisLugares", {
+					method: "GET",
+					headers: myHeaders
+				})
 					.then(res => res.json())
 					.then(async data => {
 						let arrayResults = data;
@@ -44,8 +32,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ lugares: arrayResults });
 					});
 			},
-			getMisLugares: () => {
-				fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/getMisLugares")
+			getLugares: () => {
+				fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/getLugares")
 					.then(res => res.json())
 					.then(async data => {
 						let arrayResults = data;

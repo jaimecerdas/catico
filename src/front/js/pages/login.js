@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 export const Login = () => {
 	const [email, setEmail] = useState("");
@@ -86,7 +86,14 @@ export const Login = () => {
 					Ingresar
 				</button>
 			</form>
-
+			<div className="mx-auto pt-5">
+				<p>
+					¿Olvidaste tu contraseña?
+					<Link to="/recuperacion">
+						<a> Podés recuperarla aquí.</a>
+					</Link>
+				</p>
+			</div>
 			{tipo === "usuario" && auth == true ? <Redirect to="/homeUsuario" /> : null}
 			{tipo === "empresario" && auth == true ? <Redirect to="/homeEmpresario" /> : null}
 		</div>

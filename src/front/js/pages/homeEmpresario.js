@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents, DraggableMarker } from "react-leaflet";
-import { Context } from "../store/appContext";
-import { Mapa } from "../component/mapa";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Usuario } from "../pages/usuario";
+import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
 
 import "../../styles/demo.scss";
 
@@ -90,8 +88,8 @@ export const HomeEmpresario = () => {
 			<div className="cards" id="tueslugares">
 				<h1 className="display-4 my-4">Tus Lugares</h1>
 				<div className="card">
-					<div className="row mt-4 pb-4 pt-2">
-						{store.misLugares.map((item, index) => {
+					<div className="row mt-4 pb-4 pt-2" style={{ justifyContent: "center" }}>
+						{store.lugares.map((item, index) => {
 							return (
 								<Usuario
 									key={index}
@@ -106,13 +104,7 @@ export const HomeEmpresario = () => {
 						})}
 					</div>
 				</div>
-				<Link to="/">
-					<button className="btn btn-primary my-5">Back home</button>
-				</Link>
 			</div>
-			<Link to="/">
-				<button className="btn btn-primary my-5">Back home</button>
-			</Link>
 		</div>
 	);
 };

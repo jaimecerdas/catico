@@ -71,12 +71,16 @@ export const CrearLugar = () => {
 		console.log(body);
 
 		// fetch de Creacion de Lugar
-		fetch("https://3001-pink-asp-ngdvnli9.ws-us04.gitpod.io/api/addLugar", {
+		let my_tokenUnique = sessionStorage.getItem("my_token");
+		var myHeaders = new Headers();
+		myHeaders.append("Content-Type", "application/json");
+		myHeaders.append("Authorization", "Bearer " + my_tokenUnique);
+		myHeaders.append("Content-Type", "application/json");
+
+		fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/addLugar", {
 			method: "POST",
 			body: JSON.stringify(body),
-			headers: {
-				"Content-Type": "application/json"
-			}
+			headers: myHeaders
 		})
 			.then(res => res.json())
 			.then(data => {

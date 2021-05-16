@@ -51,6 +51,7 @@ export const Detalles = props => {
 	}
 
 	executeRating(ratingStars, ratingResult);
+
 	return (
 		<div ClassName="container">
 			<div
