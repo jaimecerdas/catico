@@ -26,14 +26,19 @@ def handle_hello():
 
 #POST Visitas
 @api.route('/addVisitas', methods=['POST'])
+@jwt_required()
 def post_visitas():
     current_id = get_jwt_identity()
     user = User.query.get(current_id)
     user_email = user.email
-    visitas_nombre = request.json.get("visitas_nombre")
+
+    nombre = request.json.get("nombre", None)
+    calificacion = request.json.get("calificacion", None)
+
     nueva_visita = Visitas()
-    nueva_visita.visitas_nombre = visitas_nombre
+    nueva_visita.nombre = nombre
     nueva_visita.user_email = user_email
+    nueva_visita.calificacion = calificacion
     # crea registro de nueva visita
     db.session.add(nueva_visita)
     db.session.commit()
@@ -41,6 +46,7 @@ def post_visitas():
 
 #GET Visitas
 @api.route('/getVisitas', methods=['GET', 'POST'])
+@jwt_required()
 def get_visitas():
     current_id = get_jwt_identity()
     user = User.query.get(current_id)
@@ -107,7 +113,7 @@ def bring_visitas():
     alllugares = list(map(lambda x: Lugares.serialize(x), alllugares))
     return  jsonify(alllugares), 200
 
-#GET Lugares
+#GET Mis Lugares
 @api.route('/getMisLugares', methods=['GET'])
 @jwt_required()
 def bring_visitas2():
