@@ -1,30 +1,32 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			lugar: [
-				{
-					nombre: "Playita",
-					petfriendly: "si",
-					electricidad: "si",
-					descripcion:
-						"En este lugar podrá encontrar un lugar tranquilo para disfrutar con su familia y mascotas",
-					banos: "si",
-					contacto: "Pamela Contreras",
-					email: "pame@gmail.com",
-					telefono: "123456",
-					ubicacion: "Siquirres, 100 metros norte de la plaza de deportes",
-					accesotransporte: "si",
-					actvidades: "caminata por senderos",
-					familiar: "si"
-				}
-			],
+			lugar: [],
 			my_token: [],
-			lugares: []
+			lugares: [],
+			visitas: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
+			},
+			getMisVisitas: () => {
+				let my_tokenUnique = sessionStorage.getItem("my_token");
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+				myHeaders.append("Authorization", "Bearer " + my_tokenUnique);
+				myHeaders.append("Content-Type", "application/json");
+				fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/getVisitas", {
+					method: "GET",
+					headers: myHeaders
+				})
+					.then(res => res.json())
+					.then(async data => {
+						let arrayResults = data;
+						console.log(arrayResults);
+						setStore({ visitas: arrayResults });
+					});
 			},
 			getToken: () => {
 				let my_tokenUnique = sessionStorage.getItem("my_token");
@@ -33,6 +35,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				let test = store.my_token;
 				//console.log();
+			},
+			addVisita: body => {
+				let my_tokenUnique = sessionStorage.getItem("my_token");
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+				myHeaders.append("Authorization", "Bearer " + my_tokenUnique);
+
+				fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/addVisitas", {
+					method: "POST",
+					body: JSON.stringify(body),
+					headers: myHeaders
+				})
+					.then(res => res.json())
+					.then(data => {
+						index = params.theid;
+						console.log(data);
+						let message = data.msg;
+						console.log(message);
+						//setAuth(true);
+					})
+					.catch(err => console.log(err));
 			},
 			getLugares: () => {
 				fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/getLugares")
@@ -50,6 +73,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));
 			},
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
