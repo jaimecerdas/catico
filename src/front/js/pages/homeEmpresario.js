@@ -19,6 +19,8 @@ export const HomeEmpresario = () => {
 
 	// Variables del Lugar
 
+	// This is a new comment
+
 	const [nombre, setNombre] = useState("");
 	const [petfriendly, setPetfriendly] = useState("");
 	const [accesoTransporte, setAccesoTransporte] = useState("");
