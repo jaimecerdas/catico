@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { Usuario } from "../pages/usuario";
+import { MisLugares } from "../pages/misLugares";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
@@ -65,9 +65,6 @@ export const HomeEmpresario = () => {
 						<Link to="/crearLugar">
 							<button className="btn btn-light mx-2">Agregar un lugar</button>
 						</Link>
-						<Link to="/homeUsuario">
-							<button className="btn btn-light mx-2">Ver todos los lugares</button>
-						</Link>
 					</p>
 				</div>
 			</div>
@@ -78,7 +75,7 @@ export const HomeEmpresario = () => {
 					<div className="row mt-4 pb-4 pt-2" style={{ justifyContent: "center" }}>
 						{store.misLugares.map((item, index) => {
 							return (
-								<Usuario
+								<MisLugares
 									key={index}
 									id={index}
 									nombre={item.nombre}

@@ -37,9 +37,6 @@ export const HomeUsuario = () => {
 					);
 				})}
 			</div>
-			<Link to="/">
-				<button className="btn btn-primary my-5">Back home</button>
-			</Link>
 			{sessionStorage.getItem("my_token") === null ? <Redirect to="/" /> : null}
 		</div>
 	);
