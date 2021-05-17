@@ -39,7 +39,7 @@ export const Navbar = () => {
 			<Link to="/">
 				<span className="navbar-brand mb-0 h1">
 					{" "}
-					<img src="https://i.ibb.co/B337kMf/logo.png" alt="Star Wars" width="65" height="75" />
+					<img src="https://i.ibb.co/d6Wxrph/Camping-Tico-Logo.jpg" alt="Star Wars" width="60" height="60" />
 				</span>
 			</Link>
 			<div className="ml-auto">
