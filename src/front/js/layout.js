@@ -18,6 +18,7 @@ import { CrearLugar } from "./pages/crearLugar";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
+import { Boton } from "./component/boton";
 import { Footer } from "./component/footer";
 
 import { homeEmpresario } from "./pages/homeEmpresario";

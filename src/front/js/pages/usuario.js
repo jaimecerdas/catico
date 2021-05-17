@@ -13,11 +13,7 @@ export const Usuario = props => {
 
 	return (
 		<div className="card" style={{ width: "250px", margin: "0.5cm" }}>
-			<img
-				src="https://media-cdn.tripadvisor.com/media/photo-p/13/ab/fa/93/nature-costa-rica-tours.jpg"
-				className="card-img-top"
-				alt="..."
-			/>
+			<img src={props.url} className="card-img-top" alt="..." />
 
 			<div key={index}>
 				<div className="card-body">
@@ -59,5 +55,6 @@ Usuario.propTypes = {
 	descripcion: PropTypes.string,
 	electricidad: PropTypes.string,
 	baños: PropTypes.string,
-	petfriendly: PropTypes.string
+	petfriendly: PropTypes.string,
+	url: PropTypes.string
 };
