@@ -25,9 +25,40 @@ export const CrearLugar = () => {
 	const [contacto, setContacto] = useState(null);
 	const [email, setEmail] = useState(null);
 	const [telefono, setTelefono] = useState(null);
+	const [fileLocation, setFileLocation] = useState(null);
+	const [url, setUrl] = useState(null);
+	let link = "";
 
-	const handleSubmit = e => {
-		e.preventDefault();
+	// API EXTERNO PARA CARGAR IMAGENES
+
+	const loadImages = e => {
+		var formdata = new FormData();
+		formdata.append("image", exampleFormControlFile1.files[0], fileLocation);
+
+		var requestOptions = {
+			method: "POST",
+			body: formdata,
+			redirect: "follow"
+		};
+
+		fetch("https://api.imgbb.com/1/upload?expiration=600&key=395488d1f5e90435f61b5884f29e02f7", requestOptions)
+			.then(response => response.json())
+			.then(result => {
+				//console.log(result.data.url);
+				link = result.data.url;
+				console.log(link);
+			})
+			.catch(error => console.log("error", error));
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve("I am resolved");
+			}, 500);
+		});
+	};
+
+	// fetch para crear lugar
+
+	const crearLugar = e => {
 		//Creacion de boday para fetch
 		if (nombre === null) {
 			window.alert("Por favor revisar la información. No ingresó el campo: nombre");
@@ -52,7 +83,6 @@ export const CrearLugar = () => {
 		} else if (telefono === null) {
 			window.alert("Por favor revisar la información. No ingresó el campo: telefono");
 		}
-
 		const body = {
 			nombre: nombre,
 			ubicacion: ubicacion,
@@ -65,7 +95,8 @@ export const CrearLugar = () => {
 			descripcion: descripcion,
 			contacto: contacto,
 			email: email,
-			telefono: telefono
+			telefono: telefono,
+			url: link
 		};
 
 		console.log(body);
@@ -97,9 +128,20 @@ export const CrearLugar = () => {
 			.catch(err => console.log(err));
 	};
 
+	async function handlingAllPromises() {
+		var first = await loadImages();
+		var second = await crearLugar();
+	}
+
+	const handleSubmit = e => {
+		e.preventDefault();
+		handlingAllPromises();
+	};
+
 	return (
 		<div className="container">
 			<br />
+
 			<div className="jumbotron">
 				<h1 className="display-4">¡Hola!</h1>
 				<p className="lead">Desde esta página puedes agregar un nuevo lugar de camping.</p>
@@ -234,6 +276,15 @@ export const CrearLugar = () => {
 							id="exampleFormControlTextarea1"
 							rows="3"
 							onChange={e => setActividades(e.target.value)}
+						/>
+					</div>
+					<div className="form-group">
+						<label htmlFor="exampleFormControlFile1">Agrega una imagen</label>
+						<input
+							type="file"
+							className="form-control-file"
+							id="exampleFormControlFile1"
+							onChange={e => setFileLocation(e.target.value)}
 						/>
 					</div>
 					<button type="submit" className="btn btn-primary mb-2">

@@ -3,7 +3,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			my_token: [],
 			lugares: [],
-			misLugares: []
+			misLugares: [],
+			imageUrl: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
