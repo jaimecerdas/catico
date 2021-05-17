@@ -11,10 +11,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
+
 			getToken: () => {
 				let my_tokenUnique = sessionStorage.getItem("my_token");
 				const store = getStore();
 				setStore({ my_token: my_tokenUnique });
+			},
+			logout: () => {
+				sessionStorage.removeItem("my_token");
+				window.location.reload(false);
 			},
 			getMisLugares: () => {
 				let my_tokenUnique = sessionStorage.getItem("my_token");
@@ -22,7 +27,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				myHeaders.append("Content-Type", "application/json");
 				myHeaders.append("Authorization", "Bearer " + my_tokenUnique);
 				myHeaders.append("Content-Type", "application/json");
-				fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/getMisLugares", {
+				fetch("https://3001-brown-monkey-i76kyk39.ws-us04.gitpod.io/api/getMisLugares", {
 					method: "GET",
 					headers: myHeaders
 				})
@@ -30,16 +35,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(async data => {
 						let arrayResults = data;
 						console.log(arrayResults);
-						setStore({ lugares: arrayResults });
+						setStore({ misLugares: arrayResults });
 					});
 			},
 			getLugares: () => {
-				fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/getLugares")
+				fetch("https://3001-brown-monkey-i76kyk39.ws-us04.gitpod.io/api/getLugares")
 					.then(res => res.json())
 					.then(async data => {
 						let arrayResults = data;
 						console.log(arrayResults);
-						setStore({ misLugares: arrayResults });
+						setStore({ lugares: arrayResults });
 					});
 			},
 			getMessage: () => {

@@ -11,6 +11,7 @@ export const HomeEmpresario = () => {
 	const [auth, setAuth] = useState(false);
 
 	useEffect(() => {
+		actions.getLugares();
 		actions.getMisLugares();
 		//actions.getToken();
 		console.log(store.misLugares);
@@ -33,23 +34,6 @@ export const HomeEmpresario = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-
-		//Creacion de boday para fetch
-
-		const body = {
-			nombre: nombre,
-			petfriendly: petfriendly,
-			accesoTransporte: accesoTransporte,
-			baños: baños,
-			electricidad: electricidad,
-			ambiente: ambiente,
-			descripcion: descripcion,
-			actividades: actividades,
-			ubicacion: ubicacion,
-			contacto: contacto,
-			email: email,
-			telefono: telefono
-		};
 
 		console.log(body);
 
@@ -81,6 +65,9 @@ export const HomeEmpresario = () => {
 						<Link to="/crearLugar">
 							<button className="btn btn-light mx-2">Agregar un lugar</button>
 						</Link>
+						<Link to="/homeUsuario">
+							<button className="btn btn-light mx-2">Ver todos los lugares</button>
+						</Link>
 					</p>
 				</div>
 			</div>
@@ -89,7 +76,7 @@ export const HomeEmpresario = () => {
 				<h1 className="display-4 my-4">Tus Lugares</h1>
 				<div className="card">
 					<div className="row mt-4 pb-4 pt-2" style={{ justifyContent: "center" }}>
-						{store.lugares.map((item, index) => {
+						{store.misLugares.map((item, index) => {
 							return (
 								<Usuario
 									key={index}
@@ -98,13 +85,15 @@ export const HomeEmpresario = () => {
 									descripcion={item.descripcion}
 									electricidad={item.electricidad}
 									baños={item.baños}
-									petfriendly={item.petfriendly}
+									url={item.url}
+									petFriendly={item.petFriendly}
 								/>
 							);
 						})}
 					</div>
 				</div>
 			</div>
+			{sessionStorage.getItem("my_token") === null ? <Redirect to="/" /> : null}
 		</div>
 	);
 };

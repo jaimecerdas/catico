@@ -51,7 +51,7 @@ export const CrearLugar = () => {
 			.catch(error => console.log("error", error));
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
-				resolve("I am resolved");
+				resolve("Image uploaded");
 			}, 500);
 		});
 	};
@@ -101,14 +101,12 @@ export const CrearLugar = () => {
 
 		console.log(body);
 
-		// fetch de Creacion de Lugar
 		let my_tokenUnique = sessionStorage.getItem("my_token");
 		var myHeaders = new Headers();
-		myHeaders.append("Content-Type", "application/json");
 		myHeaders.append("Authorization", "Bearer " + my_tokenUnique);
 		myHeaders.append("Content-Type", "application/json");
 
-		fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/addLugar", {
+		fetch("https://3001-brown-monkey-i76kyk39.ws-us04.gitpod.io/api/addLugar", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: myHeaders
@@ -126,6 +124,12 @@ export const CrearLugar = () => {
 				}
 			})
 			.catch(err => console.log(err));
+
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve("Fetch sent");
+			}, 500);
+		});
 	};
 
 	async function handlingAllPromises() {
