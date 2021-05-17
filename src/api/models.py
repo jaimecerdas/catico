@@ -59,6 +59,7 @@ class Lugares(db.Model):
     email =  db.Column(db.String(120), unique=False, nullable=False)
     telefono =  db.Column(db.String(120), unique=False, nullable=False)
     empresario_email = db.Column(db.String(80), unique=False, nullable=False)
+    url = db.Column(db.String(250), unique=False, nullable=False)
 
     def __repr__(self):
         return '<Lugares %r>' % self.nombre
@@ -77,7 +78,8 @@ class Lugares(db.Model):
             "ambiente": self.ambiente,
             "contacto":self.contacto,
             "email":self.email,
-            "telefono":self.telefono
+            "telefono":self.telefono,
+            "url":self.url
         }
 
 class Visitas(db.Model):

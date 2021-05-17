@@ -86,6 +86,8 @@ def post_lugar():
     contacto =  request.json.get("contacto", None)
     email =  request.json.get("email", None)
     telefono =  request.json.get("telefono", None)
+    url =  request.json.get("url", None)
+
     # crea usuario nuevo
     new_lugar = Lugares()
     new_lugar.empresario_email = empresario_email
@@ -101,6 +103,7 @@ def post_lugar():
     new_lugar.contacto = contacto 
     new_lugar.email = email
     new_lugar.telefono = telefono
+    new_lugar.url = url
     # crea registro nuevo en BBDD de 
     db.session.add(new_lugar)
     db.session.commit()
