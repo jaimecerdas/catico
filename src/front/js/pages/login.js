@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 export const Login = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const [email, setEmail] = useState(null);
+	const [password, setPassword] = useState(null);
 	const [auth, setAuth] = useState(false);
-	const [tipo, setTipo] = useState("");
+	const [tipo, setTipo] = useState(null);
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -16,8 +16,15 @@ export const Login = () => {
 			tipo: tipo
 		};
 
+		if (email === null) {
+			window.alert("Por favor revisar la información. No ingresó el campo: email");
+		} else if (password === null) {
+			window.alert("Por favor revisar la información. No ingresó el campo: password");
+		} else if (tipo === null) {
+			window.alert("Por favor revisar la información. No ingresó el campo: tipo de usuario");
+		}
 		// fetch de LOGIN
-		fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/login", {
+		fetch("https://3001-brown-monkey-i76kyk39.ws-us04.gitpod.io/api/login", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
@@ -86,7 +93,14 @@ export const Login = () => {
 					Ingresar
 				</button>
 			</form>
-
+			<div className="mx-auto pt-5">
+				<p>
+					¿Olvidaste tu contraseña?
+					<Link to="/recuperacion">
+						<a> Podés recuperarla aquí.</a>
+					</Link>
+				</p>
+			</div>
 			{tipo === "usuario" && auth == true ? <Redirect to="/homeUsuario" /> : null}
 			{tipo === "empresario" && auth == true ? <Redirect to="/homeEmpresario" /> : null}
 		</div>

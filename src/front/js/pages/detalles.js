@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-
-import { Link, useParams, Redirect } from "react-router-dom";
+import { Redirect, Link, useParams } from "react-router-dom";
 import { Carousel, Jumbotron, Button } from "react-bootstrap";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
@@ -10,22 +9,47 @@ import "../../styles/estrellas.scss";
 
 export const Detalles = props => {
 	const { store, actions } = useContext(Context);
-	const [nombre, setNombre] = useState("");
-	const [calificacion, setCalificacion] = useState("");
-	const [auth, setAuth] = useState(false);
-
 	const params = useParams();
 	let index = params.theid;
 
-	const handleSubmit = e => {
-		e.preventDefault();
+	useEffect(() => {
+		actions.getLugares();
+		//actions.getToken();
+		//console.log(store.people);
+	}, []);
 
-		const body = {
-			nombre: email,
-			calificacion: calificacion
-		};
-		actions.addVisita(body);
-	};
+	console.log(index);
+
+	const ratingStars = [...document.getElementsByClassName("rating__star")];
+	const ratingResult = document.querySelector(".rating__result");
+
+	printRatingResult(ratingResult);
+
+	function executeRating(stars, result) {
+		const starClassActive = "rating__star fas fa-star";
+		const starClassUnactive = "rating__star far fa-star";
+		const starsLength = stars.length;
+		let i;
+		stars.map(star => {
+			star.onclick = () => {
+				i = stars.indexOf(star);
+
+				if (star.className.indexOf(starClassUnactive) !== -1) {
+					printRatingResult(result, i + 1);
+					for (i; i >= 0; --i) stars[i].className = starClassActive;
+				} else {
+					printRatingResult(result, i);
+					for (i; i < starsLength; ++i) stars[i].className = starClassUnactive;
+				}
+			};
+		});
+	}
+
+	function printRatingResult(result, num = 0) {
+		// result.textContent = [];
+	}
+
+	executeRating(ratingStars, ratingResult);
 
 	return (
 		<div ClassName="container">
@@ -83,7 +107,7 @@ export const Detalles = props => {
 								<div className="container">
 									<div className="col">
 										<div className="col">
-											<strong>Contacto: </strong>
+											<strong>Contacto:</strong>
 											{store.lugares[index].contacto}
 										</div>
 										<div className="col">
@@ -91,105 +115,51 @@ export const Detalles = props => {
 											{store.lugares[index].email}
 										</div>
 										<div className="col">
-											<strong>Teléfono: </strong>
+											<strong>Teléfono:</strong>
 											{store.lugares[index].telefono}
 										</div>
 										<div className="col">
-											<strong>Ubicación: </strong>
+											<strong>Ubicación:</strong>
 											{store.lugares[index].ubicacion}
 										</div>
 										<div className="col-sm">
-											<strong>Pet-Friendly: </strong>
-											{store.lugares[index].petFriendly}
+											<strong>Pet-Friendly:</strong>
+											{store.lugares[index].petfriendly}
 										</div>
 										<div className="col-sm">
-											<strong>Acceso Transporte: </strong>
-											{store.lugares[index].accesoTransporte}
+											<strong>Acceso Transporte:</strong>
+											{store.lugares[index].accesotransporte}
 										</div>
 										<div className="col-sm">
-											<strong>Baños: </strong>
+											<strong>Baños:</strong>
 											{store.lugares[index].baños}
 										</div>
 										<div className="col-sm">
-											<strong>Actividades extras: </strong>
+											<strong>Actividades extras:</strong>
 											{store.lugares[index].actividades}
 										</div>
 										<div className="col-sm">
-											<strong>Electricidad: </strong>
+											<strong>Electricidad:</strong>
 											{store.lugares[index].electricidad}
 										</div>
 										<div className="col-sm">
-											<strong>Familiar: </strong>
+											<strong>Familiar:</strong>
 											{store.lugares[index].ambiente}
 										</div>{" "}
 										<br />
 									</div>
 								</div>
-								<form>
-									<div className="form-check form-check-inline">
-										<input
-											onChange={e => setCalificacion(e.target.value)}
-											className="form-check-input"
-											type="radio"
-											id="inlineRadio1"
-											value="1"
-										/>
-										<label className="form-check-label" htmlFor="inlineRadio1">
-											1<i className="rating__star far fa-star" />
-										</label>
-									</div>
-									<div className="form-check form-check-inline">
-										<input
-											onChange={e => setCalificacion(e.target.value)}
-											className="form-check-input"
-											type="radio"
-											id="inlineRadio2"
-											value="2"
-										/>
-										<label className="form-check-label" htmlFor="inlineRadio2">
-											2<i className="rating__star far fa-star" />
-										</label>
-									</div>
-									<div className="form-check form-check-inline">
-										<input
-											onChange={e => setCalificacion(e.target.value)}
-											className="form-check-input"
-											type="radio"
-											id="inlineRadio3"
-											value="3"
-										/>
-										<label className="form-check-label" htmlFor="inlineRadio3">
-											3<i className="rating__star far fa-star" />
-										</label>
-									</div>
-									<div className="form-check form-check-inline">
-										<input
-											onChange={e => setCalificacion(e.target.value)}
-											className="form-check-input"
-											type="radio"
-											id="inlineRadio3"
-											value="4"
-										/>
-										<label className="form-check-label" htmlFor="inlineRadio4">
-											4<i className="rating__star far fa-star" />
-										</label>
-									</div>
-									<div className="form-check form-check-inline">
-										<input
-											onChange={e => setCalificacion(e.target.value)}
-											className="form-check-input"
-											type="radio"
-											id="inlineRadio3"
-											value="5"
-										/>
-										<label className="form-check-label" htmlFor="inlineRadio5">
-											5<i className="rating__star far fa-star" />
-										</label>
-									</div>
-									<button type="submit" className="btn btn-primary">
-										Calificar
-									</button>
-								</form>
+
+								<div className="rating">
+									{/* onClick=
+				{() => actions.addFavorites(element.name, "nombre")}
+				type="button"> */}
+									<i className="rating__star far fa-star" />
+									<i className="rating__star far fa-star" />
+									<i className="rating__star far fa-star" />
+									<i className="rating__star far fa-star" />
+									<i className="rating__star far fa-star" />
+								</div>
 							</div>
 						</div>
 					</div>
@@ -204,7 +174,7 @@ export const Detalles = props => {
 					/>
 				</Link>
 			</div>
-			{auth ? <Redirect to="/historial" /> : null}
+			{sessionStorage.getItem("my_token") === null ? <Redirect to="/" /> : null}
 		</div>
 	);
 };

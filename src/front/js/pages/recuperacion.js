@@ -29,7 +29,7 @@ export const Recuperacion = () => {
 		};
 
 		// fetch de REGISTER
-		fetch("https://3001-pink-asp-ngdvnli9.ws-us04.gitpod.io/api/recuperacion", {
+		fetch("https://3001-brown-monkey-i76kyk39.ws-us04.gitpod.io/api/recuperacion", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {

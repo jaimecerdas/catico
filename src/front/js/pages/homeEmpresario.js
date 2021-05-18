@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents, DraggableMarker } from "react-leaflet";
+import { Link, Redirect } from "react-router-dom";
+import { MisLugares } from "../pages/misLugares";
 import { Context } from "../store/appContext";
-import { Mapa } from "../component/mapa";
-import { Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import "../../styles/demo.scss";
 
@@ -11,7 +10,16 @@ export const HomeEmpresario = () => {
 	const { store, actions } = useContext(Context);
 	const [auth, setAuth] = useState(false);
 
+	useEffect(() => {
+		actions.getLugares();
+		actions.getMisLugares();
+		//actions.getToken();
+		console.log(store.misLugares);
+	}, []);
+
 	// Variables del Lugar
+
+	// This is a new comment
 
 	const [nombre, setNombre] = useState("");
 	const [petfriendly, setPetfriendly] = useState("");
@@ -28,23 +36,6 @@ export const HomeEmpresario = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-
-		//Creacion de boday para fetch
-
-		const body = {
-			nombre: nombre,
-			petfriendly: petfriendly,
-			accesoTransporte: accesoTransporte,
-			baños: baños,
-			electricidad: electricidad,
-			ambiente: ambiente,
-			descripcion: descripcion,
-			actividades: actividades,
-			ubicacion: ubicacion,
-			contacto: contacto,
-			email: email,
-			telefono: telefono
-		};
 
 		console.log(body);
 
@@ -83,38 +74,25 @@ export const HomeEmpresario = () => {
 			<div className="cards" id="tueslugares">
 				<h1 className="display-4 my-4">Tus Lugares</h1>
 				<div className="card">
-					<div className="card-body">
-						<h5 className="card-title">Camping Montañas Azules de Heredia</h5>
-						<p className="card-text">
-							Descripcion del lugar: Contamos con zona de camping para 20 personas en la mejor zona de
-							Heredia.{" "}
-						</p>
-						<ol>
-							<li>Pet Friendly: Sí</li>
-							<li>Transporte: Sí</li>
-							<li>Baños: Sí</li>
-							<li>Electricidad: No</li>
-							<li>Ambiente: Adultos</li>
-							<li>Actividades: Senderismo, Zona de BBQ.</li>
-						</ol>
-						<img
-							className="card-img-top my-3"
-							src="https://www.intermundial.es/blog/wp-content/uploads/2014/06/shutterstock_64920532.jpg"
-							alt="Card image cap"
-							width="300"
-							height="700"
-						/>
-						<Link to="/Detalles">
-							<button href="#" className="btn btn-primary">
-								Detalles
-							</button>
-						</Link>
+					<div className="row mt-4 pb-4 pt-2" style={{ justifyContent: "center" }}>
+						{store.misLugares.map((item, index) => {
+							return (
+								<MisLugares
+									key={index}
+									id={index}
+									nombre={item.nombre}
+									descripcion={item.descripcion}
+									electricidad={item.electricidad}
+									baños={item.baños}
+									url={item.url}
+									petFriendly={item.petFriendly}
+								/>
+							);
+						})}
 					</div>
 				</div>
 			</div>
-			<Link to="/">
-				<button className="btn btn-primary my-5">Back home</button>
-			</Link>
+			{sessionStorage.getItem("my_token") === null ? <Redirect to="/" /> : null}
 		</div>
 	);
 };

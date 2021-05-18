@@ -7,12 +7,10 @@ from .models import db, User, Visitas, Empresario, Lugares
 from api.utils import generate_sitemap, APIException
 api = Blueprint('api', __name__)
 from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity, create_access_token
-
 # Handle/serialize errors like a JSON object
 @api.errorhandler(APIException)
 def handle_invalid_usage(error):
     return jsonify(error.to_dict()), error.status_code
-
 # generate sitemap with all your endpoints
 @api.route('/')
 def sitemap():
@@ -23,7 +21,6 @@ def handle_hello():
         "message": "Hello! I'm a message that came from the backend"
     }
     return jsonify(response_body), 200
-
 #POST Visitas
 @api.route('/addVisitas', methods=['POST'])
 def post_visitas():
@@ -38,7 +35,6 @@ def post_visitas():
     db.session.add(nueva_visita)
     db.session.commit()
     return jsonify({"msg": "La Visita se registro exitosamente"}), 200
-
 #GET Visitas
 @api.route('/getVisitas', methods=['GET', 'POST'])
 def get_visitas():
@@ -48,7 +44,6 @@ def get_visitas():
     allvisitas = Visitas.query.filter_by(user_email=user_email)
     allvisitas = list(map(lambda x: Visitas.serialize(x), allvisitas))
     return  jsonify(allvisitas), 200
-
 #DELETE Visitas
 @api.route('/delVisitas', methods=['DELETE'])
 def del_visitas():
@@ -60,13 +55,13 @@ def del_visitas():
     db.session.delete(delvisitas)
     db.session.commit()
     return jsonify({"msg": "La visita se borro exitosamente"}), 400
-
 #POST Lugar
 @api.route('/addLugar', methods=['POST'])
+@jwt_required()
 def post_lugar():
-    #current_id = get_jwt_identity()
-    #user = User.query.get(current_id)
-    #user_email = user.email
+    current_id = get_jwt_identity()
+    empresario = Empresario.query.get(current_id)
+    empresario_email = empresario.email
     nombre = request.json.get("nombre", None)
     ubicacion = request.json.get("ubicacion", None)
     petFriendly = request.json.get("petFriendly", None)
@@ -81,7 +76,7 @@ def post_lugar():
     telefono =  request.json.get("telefono", None)
     # crea usuario nuevo
     new_lugar = Lugares()
-    #new_lugar.user.email = user.email
+    new_lugar.empresario_email = empresario_email
     new_lugar.nombre = nombre
     new_lugar.ubicacion = ubicacion
     new_lugar.petFriendly = petFriendly
@@ -97,14 +92,23 @@ def post_lugar():
     # crea registro nuevo en BBDD de 
     db.session.add(new_lugar)
     db.session.commit()
-    return jsonify({"msg": "El Lugar se creo con éxito"}), 200   
-
+    return jsonify({"msg": "El Lugar se creo con éxito"}), 200
 #GET Lugares
 @api.route('/getLugares', methods=['GET'])
 def bring_visitas():
     alllugares = Lugares.query.all()
     alllugares = list(map(lambda x: Lugares.serialize(x), alllugares))
     return  jsonify(alllugares), 200
+#GET Lugares
+@api.route('/getMisLugares', methods=['GET'])
+@jwt_required()
+def bring_visitas2():
+    current_id = get_jwt_identity()
+    empresario = Empresario.query.get(current_id)
+    empresario_email = empresario.email
+    mislugares = Lugares.query.filter_by(empresario_email=empresario_email)
+    mislugares = list(map(lambda x: Lugares.serialize(x), mislugares))
+    return  jsonify(mislugares), 200
 #Falta hacerlo por usuario
 @api.route('/register', methods=['POST'])
 def register_user():
@@ -156,7 +160,6 @@ def register_user():
             db.session.add(new_empresario)
             db.session.commit()
             return jsonify({"msg": "El Empresario se creo con éxito"}), 200
-
 @api.route('/login', methods=['GET', 'POST']) 
 # @jwt_required()
 def login():

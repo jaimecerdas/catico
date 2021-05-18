@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { Usuario } from "../pages/usuario";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
@@ -31,14 +31,13 @@ export const HomeUsuario = () => {
 							descripcion={item.descripcion}
 							electricidad={item.electricidad}
 							baños={item.baños}
-							petFriendly={item.petFriendly}
+							petfriendly={item.petfriendly}
+							url={item.url}
 						/>
 					);
 				})}
 			</div>
-			<Link to="/">
-				<button className="btn btn-primary my-5">Back home</button>
-			</Link>
+			{sessionStorage.getItem("my_token") === null ? <Redirect to="/" /> : null}
 		</div>
 	);
 };
