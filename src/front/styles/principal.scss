@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:wght@700");
 
 .d-block w-100{
     animation-timing-function: 5s infinite;  
@@ -19,4 +20,38 @@ width: 731px;
 
 .hoja {
     color: #90b97f;
+}
+
+.img-fluid{
+  max-width: 100%;
+  height: auto;
+  border-radius: 65px;
+
+}
+
+.three-cards, .three-cards-container{
+    background-color: aliceblue;
+}
+
+.card-vertical-v2020{
+    height: 100%;
+    border-radius: 25px;
+    background-color: #fff;
+    box-shadow: 0 13px 36px 0 #eadfd1;
+    justify-content: center;
+    margin: auto;
+}
+.card-vertical-v2020 .card-vertical-v2020--image{
+    height: 120px;
+    height: fit-content;
+}
+
+.card-vertical-v2020 .card-vertical-v2020--image img{
+     width: 35%;
+     margin-top: -1rem;
+     padding: 10px 0;    
+}
+
+.card-vertical-v2020:hover{
+    opacity: 0.6;
 }

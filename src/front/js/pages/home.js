@@ -72,12 +72,64 @@ export const Home = () => {
 					</div>
 				</div>
 			</div>
+			<div className="container-fluid three-cards-container">
+				<section className="three-cards">
+					<div className="container">
+						<div className="row" style={{ marginBottom: "6rem", marginTop: "6rem" }}>
+							<div className="text-center mt-5 col-lg-4 col-12">
+								<div className="card-vertical-v2020 v2020 p-4">
+									<div className="card-vertical-v2020--image mx-auto">
+										<img src="https://blush.design/api/download?shareUri=pYmsQJ22H&w=800&h=800&fm=png" />
+									</div>
+									<div className="card-vertical-v2020--text mx-2">
+										<h5>FÁCIL DE USAR</h5>
+										<p>
+											Ya no tendrás que buscar en multiples páginas. Desde tu perfil podrás
+											encontrar muchas opciones de Camping.
+										</p>
+									</div>
+								</div>
+							</div>
+							<div className="text-center mt-5 col-lg-4 col-12">
+								<div className="card-vertical-v2020 v2020 p-4">
+									<div className="card-vertical-v2020--image mx-auto">
+										<img src="https://blush.design/api/download?shareUri=_sx6PRwkr1&w=800&h=800&fm=png" />
+									</div>
+
+									<div className="card-vertical-v2020--text mx-2">
+										<h5>CONOCE COSTA RICA</h5>
+										<p>
+											¿Te haz preguntado si hay opciones de camping cerca de esa playa que tanto
+											te gusta? Con CampingTico podrás estár mas tiempo cerca de ella ahorrando
+											dinero.
+										</p>
+									</div>
+								</div>
+							</div>
+							<div className="text-center mt-5 col-lg-4 col-12">
+								<div className="card-vertical-v2020 v2020 p-4">
+									<div className="card-vertical-v2020--image mx-auto">
+										<img src="https://blush.design/api/download?shareUri=Ei62k8_IE&w=800&h=800&fm=png" />
+									</div>
+									<div className="card-vertical-v2020--text mx-2">
+										<h5>APOYA EL COMERCIO LOCAL</h5>
+										<p>
+											Evitemos el cierre de empresas. CampingTico promociona empresas locales.
+											Invita a más comercios a formar parte de esta aventura.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
 			<div className="d-flex justify-content-center align-middle mt-5">
 				<div className="row align-items-center justify-content-center">
 					<div>
 						<h1>
 							<img
-								src="https://blush.design/api/download?shareUri=tbXXhj0e3WWb05hw&c=Hair_0%7Ed5bc69-0.1%7E020c1f-0.2%7E020c1f-0.3%7Ed5bc69_Skin_0%7Eeedab7-0.1%7E6a4728-0.2%7E8f7240-0.3%7E8f7240_Top_0%7E4a448c-0.1%7E4a448c-0.2%7E747b44-0.3%7E4a448c&w=800&h=800&fm=png"
+								src="https://blush.design/api/download?shareUri=w2iEFrTSVGMxjnui&c=Hair_0%7Ed5bc69-0.1%7E020c1f-0.2%7E020c1f-0.3%7Eb4712e_Skin_0%7Eb69865-0.1%7Ed2b687-0.2%7E8f7240-0.3%7Eeedab7_Top_0%7E747b44-0.1%7E4a448c-0.2%7E747b44-0.3%7Eb36f2d&w=800&h=800&fm=png"
 								className="img-fluid"
 								alt="..."
 							/>
