@@ -207,6 +207,18 @@ export const Home = () => {
 					</div>
 				</div>
 			</div>
+			<div className="d-flex justify-content-center align-middle mt-5 mb-5">
+				<div className="col-md-12">
+					<h1>Este proyecto se realizo con apoyo de:</h1>
+					<a className="img-cinde" href="https://www.cinde.org/es" rel="noopener noreferrer" target="_blank">
+						<img
+							id="img-cinde"
+							src="https://www.cinde.org/assets/logo-es-2747ca9cf9565297a9fe10ae3b394b672373297ff186f8de3bf7b07f0fc4ba3e.svg"
+							alt="..."
+						/>
+					</a>
+				</div>
+			</div>
 		</div>
 	);
 };
