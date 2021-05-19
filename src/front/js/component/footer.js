@@ -6,9 +6,17 @@ export const Footer = () => (
 	<footer className="footer mt-auto py-3 text-center">
 		<p>
 			<i className="fab fa-facebook fa-2x fa-lg" style={{ margin: "0.5cm" }} />
-			<a href="http://www.facebook.com">/CampingTico </a>
-			<i className="fab fa-instagram fa-2x " style={{ margin: "0.5cm" }} />
-			<a href="http://www.instagram.com">/CampingTico </a>{" "}
+			<a href="http://www.facebook.com">
+				<strong>/CampingTico</strong>{" "}
+			</a>
+			<a
+				href="https://www.instagram.com/?hl=esl"
+				className="fab fa-instagram fa-2x "
+				style={{ margin: "0.5cm" }}
+			/>
+			<a href="http://www.instagram.com">
+				<strong>/CampingTico</strong>{" "}
+			</a>{" "}
 		</p>
 		<p>CampingTico © 2021</p>
 	</footer>
