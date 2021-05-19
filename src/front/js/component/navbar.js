@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/navbar.scss";
+import "../../styles/principal.scss";
 
 export const Navbar = () => {
 	return (
@@ -8,7 +8,12 @@ export const Navbar = () => {
 			<Link to="/">
 				<span className="navbar-brand mb-0 h1">
 					{" "}
-					<img src="https://i.ibb.co/B337kMf/logo.png" alt="Star Wars" width="65" height="75" />
+					<img
+						src="https://i.ibb.co/QMhJvTz/Camping-White-Logo.png"
+						alt="Star Wars"
+						width="110"
+						height="100"
+					/>
 				</span>
 			</Link>
 			<div className="ml-auto">
