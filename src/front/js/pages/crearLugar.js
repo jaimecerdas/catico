@@ -147,7 +147,11 @@ export const CrearLugar = () => {
 		<div className="container">
 			<br />
 
-			<div className="jumbotron">
+			<div
+				className="jumbotron"
+				style={{
+					backgroundColor: "transparent"
+				}}>
 				<h1 className="display-4">¡Hola!</h1>
 				<p className="lead">Desde esta página puedes agregar un nuevo lugar de camping.</p>
 				<hr className="my-4" />
@@ -292,7 +296,7 @@ export const CrearLugar = () => {
 							onChange={e => setFileLocation(e.target.value)}
 						/>
 					</div>
-					<button type="submit" className="btn btn-primary mb-2">
+					<button type="submit" className="btn btn-light mb-2">
 						Crear nuevo lugar
 					</button>
 				</form>

@@ -89,7 +89,7 @@ export const Login = () => {
 						id="exampleInputPassword1"
 					/>
 				</div>
-				<button type="submit" className="btn btn-primary">
+				<button type="submit" className="btn btn-light">
 					Ingresar
 				</button>
 			</form>
