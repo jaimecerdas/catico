@@ -118,7 +118,7 @@ export const Register = () => {
 			</form>
 
 			{tipo === "usuario" && auth == true ? <Redirect to="/login" /> : null}
-			{tipo === "empresario" && auth == true ? <Redirect to="/loginempresario" /> : null}
+			{tipo === "empresario" && auth == true ? <Redirect to="/login" /> : null}
 		</div>
 	);
 };

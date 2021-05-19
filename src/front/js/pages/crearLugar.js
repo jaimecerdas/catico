@@ -53,7 +53,7 @@ export const CrearLugar = () => {
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
 				resolve("Image uploaded");
-			}, 500);
+			}, 1500);
 		});
 	};
 

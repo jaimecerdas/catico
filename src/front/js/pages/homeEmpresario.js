@@ -22,7 +22,7 @@ export const HomeEmpresario = () => {
 	// This is a new comment
 
 	const [nombre, setNombre] = useState("");
-	const [petfriendly, setPetfriendly] = useState("");
+	const [petFriendly, setPetFriendly] = useState("");
 	const [accesoTransporte, setAccesoTransporte] = useState("");
 	const [baños, setBaños] = useState("");
 	const [electricidad, setElectricidad] = useState("");

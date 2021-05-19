@@ -12,7 +12,7 @@ export const MisLugares = props => {
 	let index = params.theid;
 
 	return (
-		<div className="card" style={{ width: "250px", backgroundColor: "transparent" }}>
+		<div className="card" style={{ width: "250px", margin: "0.5cm" }}>
 			<img src={props.url} className="card-img-top" alt="..." />
 
 			<div key={index}>
@@ -22,16 +22,16 @@ export const MisLugares = props => {
 				</div>
 				<div className="list-group list-group-flush">
 					<li className="list-group-item">
-						Electricidad:
+						<strong>Electricidad: </strong>
 						{props.electricidad}
 					</li>
 					<li className="list-group-item">
-						Baños:
+						<strong>Baños: </strong>
 						{props.baños}
 					</li>
 					<li className="list-group-item">
-						Petfriendly:
-						{props.petfriendly}
+						<strong>Petfriendly: </strong>
+						{props.petFriendly}
 					</li>
 				</div>
 			</div>
@@ -63,6 +63,6 @@ MisLugares.propTypes = {
 	descripcion: PropTypes.string,
 	electricidad: PropTypes.string,
 	baños: PropTypes.string,
-	petfriendly: PropTypes.string,
+	petFriendly: PropTypes.string,
 	url: PropTypes.string
 };
