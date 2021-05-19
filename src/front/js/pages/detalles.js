@@ -163,7 +163,10 @@ export const Detalles = props => {
 									<i className="rating__star far fa-star" onClick={() => handleRating(2)} />
 									<i className="rating__star far fa-star" onClick={() => handleRating(3)} />
 									<i className="rating__star far fa-star" onClick={() => handleRating(4)} />
-									<i className="rating__star far fa-star" onClick={() => handleRating(5)} />
+									<i
+										className="rating__star far fa-star"
+										onClick={() => alert("Funcionalidad para futura version")}
+									/>
 								</div>
 							</div>
 						</div>
@@ -176,7 +179,7 @@ export const Detalles = props => {
 						src="https://i.pinimg.com/originals/94/ef/8c/94ef8cbd183d0cb15829512cbd5a1015.gif"
 						style={{ width: "4cm", height: "3cm", marginLeft: "1cm", WebkitMaskPositionX: "2cm" }}
 					/>
-					Regresar
+					<strong>Regresar</strong>
 				</Link>
 			</div>
 			{sessionStorage.getItem("my_token") === null ? <Redirect to="/" /> : null}
