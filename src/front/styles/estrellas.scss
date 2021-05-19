@@ -1,7 +1,7 @@
 .rating {
    position: relative;
    width: 180px;
-   background: transparent;
+   background: white;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -20,7 +20,7 @@
    transform: translateY(-10px) translateX(-5px);
    z-index: -9;
    font: 3em Arial, Helvetica, sans-serif;
-   color: #ebebeb8e;
+   background: white;
    pointer-events: none;
 }
 
@@ -29,6 +29,7 @@
    cursor: pointer;
    color: #dabd18b2;
    transition: filter linear .3s;
+   background: white;
 }
 
 .rating__star:hover {
@@ -37,9 +38,5 @@
 /* 
     General Styles
 */
-.scrolling-wrapper{
-overflow-x: auto;
-// background-color: #000000;
-background-image: linear-gradient(200deg, #8A9A5B 50%, #b2a784 85%);
-}
+
 

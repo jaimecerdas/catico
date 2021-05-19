@@ -1,8 +1,10 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			lugar: [],
 			my_token: [],
 			lugares: [],
+			visitas: [],
 			misLugares: [],
 			imageUrl: []
 		},
@@ -11,7 +13,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-
+			getMisVisitas: () => {
+				let my_tokenUnique = sessionStorage.getItem("my_token");
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+				myHeaders.append("Authorization", "Bearer " + my_tokenUnique);
+				myHeaders.append("Content-Type", "application/json");
+				fetch("https://3001-tomato-woodpecker-kss14jqn.ws-us04.gitpod.io/api/getVisitas", {
+					method: "GET",
+					headers: myHeaders
+				})
+					.then(res => res.json())
+					.then(async data => {
+						let arrayResults = data;
+						console.log(arrayResults);
+						setStore({ visitas: arrayResults });
+					});
+			},
 			getToken: () => {
 				let my_tokenUnique = sessionStorage.getItem("my_token");
 				const store = getStore();
@@ -38,6 +56,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ misLugares: arrayResults });
 					});
 			},
+			addVisita: body => {
+				let my_tokenUnique = sessionStorage.getItem("my_token");
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+				myHeaders.append("Authorization", "Bearer " + my_tokenUnique);
+
+				fetch("https://3001-tomato-woodpecker-kss14jqn.ws-us04.gitpod.io/api/addVisitas", {
+					method: "POST",
+					body: JSON.stringify(body),
+					headers: myHeaders
+				})
+					.then(res => res.json())
+					.then(data => {
+						index = params.theid;
+						console.log(data);
+						let message = data.msg;
+						console.log(message);
+						//setAuth(true);
+					})
+					.catch(err => console.log(err));
+			},
 			getLugares: () => {
 				fetch(process.env.REACT_APP_BACKEND_URL + "/api/getLugares")
 					.then(res => res.json())
@@ -54,6 +93,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));
 			},
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
