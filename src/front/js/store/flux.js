@@ -19,7 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				myHeaders.append("Content-Type", "application/json");
 				myHeaders.append("Authorization", "Bearer " + my_tokenUnique);
 				myHeaders.append("Content-Type", "application/json");
-				fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/getVisitas", {
+				fetch("https://3001-tomato-woodpecker-kss14jqn.ws-us04.gitpod.io/api/getVisitas", {
 					method: "GET",
 					headers: myHeaders
 				})
@@ -45,7 +45,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				myHeaders.append("Content-Type", "application/json");
 				myHeaders.append("Authorization", "Bearer " + my_tokenUnique);
 				myHeaders.append("Content-Type", "application/json");
-				fetch("https://3001-brown-monkey-i76kyk39.ws-us04.gitpod.io/api/getMisLugares", {
+				fetch("https://3001-tomato-woodpecker-kss14jqn.ws-us04.gitpod.io/api/getMisLugares", {
 					method: "GET",
 					headers: myHeaders
 				})
@@ -62,7 +62,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				myHeaders.append("Content-Type", "application/json");
 				myHeaders.append("Authorization", "Bearer " + my_tokenUnique);
 
-				fetch("https://3001-coral-bonobo-s5olftyf.ws-us04.gitpod.io/api/addVisitas", {
+				fetch("https://3001-tomato-woodpecker-kss14jqn.ws-us04.gitpod.io/api/addVisitas", {
 					method: "POST",
 					body: JSON.stringify(body),
 					headers: myHeaders
@@ -78,7 +78,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.log(err));
 			},
 			getLugares: () => {
-				fetch("https://3001-brown-monkey-i76kyk39.ws-us04.gitpod.io/api/getLugares")
+				fetch("https://3001-tomato-woodpecker-kss14jqn.ws-us04.gitpod.io/api/getLugares")
 					.then(res => res.json())
 					.then(async data => {
 						let arrayResults = data;

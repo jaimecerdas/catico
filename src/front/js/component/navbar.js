@@ -33,6 +33,9 @@ import { Boton } from "../component/boton";
 				</Link>
 */
 
+<Link to="/historial">
+	<button className="btn btn-light mx-2">Historial</button>
+</Link>;
 export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light mb-3" id="navbar">
@@ -45,6 +48,15 @@ export const Navbar = () => {
 			<div className="ml-auto">
 				<Boton />
 			</div>
+			<Link to="/historial">
+				<button className="btn btn-light mx-2">Historial</button>
+			</Link>
+			<Link to="/visita">
+				<button className="btn btn-light mx-2">Historial</button>
+			</Link>
+			<Link to="/homeUsuario">
+				<button className="btn btn-light mx-2">HomeUsuario</button>
+			</Link>
 		</nav>
 	);
 };
