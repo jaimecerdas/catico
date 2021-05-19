@@ -40,7 +40,7 @@ export const HomeEmpresario = () => {
 		console.log(body);
 
 		// fetch de Creacion de Lugar
-		fetch("https://3001-pink-asp-ngdvnli9.ws-us04.gitpod.io/api/addLugar", {
+		fetch(process.env.REACT_APP_BACKEND_URL + "/api/addLugar", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
@@ -58,7 +58,12 @@ export const HomeEmpresario = () => {
 	return (
 		<div className="container">
 			<br />
-			<div className="jumbotron" id="jumbotron">
+			<div
+				className="jumbotron"
+				style={{
+					backgroundColor: "transparent"
+				}}
+				id="jumbotron">
 				<h1 className="display-4">¡Hola!</h1>
 				<p className="lead">Bienvenido a tu perfil de empresario</p>
 				<hr className="my-4" />
@@ -71,10 +76,25 @@ export const HomeEmpresario = () => {
 				</div>
 			</div>
 
-			<div className="cards" id="tueslugares">
-				<h1 className="display-4 my-4">Tus Lugares</h1>
-				<div className="card">
-					<div className="row mt-4 pb-4 pt-2" style={{ justifyContent: "center" }}>
+			<div
+				className="cards"
+				id="tueslugares"
+				style={{
+					backgroundColor: "transparent"
+				}}>
+				<h1
+					className="display-4 my-4"
+					style={{
+						backgroundColor: "transparent"
+					}}>
+					Tus Lugares
+				</h1>
+				<div
+					className="card"
+					style={{
+						backgroundColor: "transparent"
+					}}>
+					<div className="row mt-4 pb-4 pt-2 mx-3" style={{ justifyContent: "center" }}>
 						{store.misLugares.map((item, index) => {
 							return (
 								<MisLugares

@@ -12,7 +12,7 @@ export const MisLugares = props => {
 	let index = params.theid;
 
 	return (
-		<div className="card" style={{ width: "250px", margin: "0.5cm" }}>
+		<div className="card" style={{ width: "250px", backgroundColor: "transparent" }}>
 			<img src={props.url} className="card-img-top" alt="..." />
 
 			<div key={index}>
@@ -36,20 +36,20 @@ export const MisLugares = props => {
 				</div>
 			</div>
 
-			<div className="card-body">
-				<div className="col-sm mb-1" key={index}>
-					<button className="btn btn-light mx-2" onClick={() => alert("Funcionalidad para futura version")}>
+			<div className="card ">
+				<div className="col-sm " key={index} style={{ backgroundColor: "transparent" }}>
+					<button className="btn btn-light mt-1" onClick={() => alert("Funcionalidad para futura version")}>
 						Editar
 					</button>
 				</div>
-				<div className="col-sm mb-1" key={index}>
-					<button className="btn btn-light mx-2" onClick={() => alert("Funcionalidad para futura version")}>
+				<div className="col-sm" key={index} style={{ backgroundColor: "transparent" }}>
+					<button className="btn btn-light mt-1" onClick={() => alert("Funcionalidad para futura version")}>
 						Borrar
 					</button>
 				</div>
-				<div className="col-sm mb-1" key={index}>
-					<button className="btn btn-light mx-2" onClick={() => alert("Funcionalidad para futura version")}>
-						Cerrar sesión
+				<div className="col-sm " key={index} style={{ backgroundColor: "transparent" }}>
+					<button className="btn btn-light mt-1" onClick={() => alert("Funcionalidad para futura version")}>
+						Ver detalles
 					</button>
 				</div>
 			</div>

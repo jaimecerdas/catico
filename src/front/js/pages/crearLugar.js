@@ -40,6 +40,8 @@ export const CrearLugar = () => {
 			redirect: "follow"
 		};
 
+		// API EXTERNO www.imgbb.com
+
 		fetch("https://api.imgbb.com/1/upload?expiration=600&key=395488d1f5e90435f61b5884f29e02f7", requestOptions)
 			.then(response => response.json())
 			.then(result => {
@@ -105,7 +107,7 @@ export const CrearLugar = () => {
 		myHeaders.append("Authorization", "Bearer " + my_tokenUnique);
 		myHeaders.append("Content-Type", "application/json");
 
-		fetch("https://3001-brown-monkey-i76kyk39.ws-us04.gitpod.io/api/addLugar", {
+		fetch(process.env.REACT_APP_BACKEND_URL + "/api/addLugar", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: myHeaders
@@ -145,7 +147,11 @@ export const CrearLugar = () => {
 		<div className="container">
 			<br />
 
-			<div className="jumbotron">
+			<div
+				className="jumbotron"
+				style={{
+					backgroundColor: "transparent"
+				}}>
 				<h1 className="display-4">¡Hola!</h1>
 				<p className="lead">Desde esta página puedes agregar un nuevo lugar de camping.</p>
 				<hr className="my-4" />
@@ -290,7 +296,7 @@ export const CrearLugar = () => {
 							onChange={e => setFileLocation(e.target.value)}
 						/>
 					</div>
-					<button type="submit" className="btn btn-primary mb-2">
+					<button type="submit" className="btn btn-light mb-2">
 						Crear nuevo lugar
 					</button>
 				</form>

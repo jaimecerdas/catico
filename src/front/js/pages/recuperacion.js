@@ -29,7 +29,7 @@ export const Recuperacion = () => {
 		};
 
 		// fetch de REGISTER
-		fetch("https://3001-brown-monkey-i76kyk39.ws-us04.gitpod.io/api/recuperacion", {
+		fetch(process.env.REACT_APP_BACKEND_URL + "/api/recuperacion", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
@@ -103,7 +103,7 @@ export const Recuperacion = () => {
 						id="exampleInputPassword1"
 					/>
 				</div>
-				<button type="submit" className="btn btn-primary">
+				<button type="submit" className="btn btn-light">
 					Cambiar contraseña
 				</button>
 			</form>

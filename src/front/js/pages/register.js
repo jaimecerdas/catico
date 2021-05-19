@@ -33,7 +33,7 @@ export const Register = () => {
 		};
 
 		// fetch de REGISTER
-		fetch("https://3001-tomato-woodpecker-kss14jqn.ws-us04.gitpod.io/api/register", {
+		fetch(process.env.REACT_APP_BACKEND_URL + "/api/register", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
@@ -112,7 +112,7 @@ export const Register = () => {
 						<p>Crea un pin en caso de que olvides la contraseña</p>
 					</div>
 				</div>
-				<button type="submit" className="btn btn-primary">
+				<button type="submit" className="btn btn-light">
 					Crear cuenta
 				</button>
 			</form>

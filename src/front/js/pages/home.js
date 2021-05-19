@@ -11,13 +11,15 @@ export const Home = () => {
 		<div className="container">
 			<div className="row ">
 				<div className="col-12 text-center">
-					<p id="logo" style={{ color: "rgb(106 98 90)" }}>
-						CampingTico
-						<i className="fas fa-leaf" style={{ color: "rgb(106 98 90)" }} />
-					</p>
+					<img
+						src="https://i.ibb.co/YLgjY18/Campintico-Big-logo-final.png"
+						alt="CampingTico"
+						width="800"
+						height="170"
+					/>
 				</div>
 				<div className="col-12 text-center">
-					<p id="text">Bienvenido a CampingTico! Tu lugar de Camping de Costa Rica.</p>
+					<p id="text">¡Bienvenido a CampingTico! Tu lugar de Camping en Costa Rica.</p>
 				</div>
 				<div className="col-12 text-center">
 					<p>
@@ -100,7 +102,7 @@ export const Home = () => {
 			<div className="d-flex justify-content-center align-middle mt-5" id="acampar">
 				<div className="col-md-12">
 					<div>
-						<h1>¿Porqué acampar?</h1>
+						<h1>¿Por qué acampar?</h1>
 						<p className="text-description padding-bottom-text" style={{ color: "rgb(255,255,255)" }}>
 							Ir a acampar es una de las actividades más divertidas que podés hacer. Salir y disfrutar,
 							conocer, explorar y vivir para conectarte con la naturaleza y tener aventuras nuevas. Tantos
