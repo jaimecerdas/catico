@@ -27,7 +27,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				myHeaders.append("Content-Type", "application/json");
 				myHeaders.append("Authorization", "Bearer " + my_tokenUnique);
 				myHeaders.append("Content-Type", "application/json");
-				fetch("https://3001-brown-monkey-i76kyk39.ws-us04.gitpod.io/api/getMisLugares", {
+				fetch(process.env.REACT_APP_BACKEND_URL + "/api/getMisLugares", {
 					method: "GET",
 					headers: myHeaders
 				})
@@ -39,7 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getLugares: () => {
-				fetch("https://3001-brown-monkey-i76kyk39.ws-us04.gitpod.io/api/getLugares")
+				fetch(process.env.REACT_APP_BACKEND_URL + "/api/getLugares")
 					.then(res => res.json())
 					.then(async data => {
 						let arrayResults = data;

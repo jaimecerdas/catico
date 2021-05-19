@@ -36,7 +36,7 @@ export const MisLugares = props => {
 				</div>
 			</div>
 
-			<div className="card-body">
+			<div className="card">
 				<div className="col-sm mb-1" key={index}>
 					<button className="btn btn-light mx-2" onClick={() => alert("Funcionalidad para futura version")}>
 						Editar
@@ -49,7 +49,7 @@ export const MisLugares = props => {
 				</div>
 				<div className="col-sm mb-1" key={index}>
 					<button className="btn btn-light mx-2" onClick={() => alert("Funcionalidad para futura version")}>
-						Cerrar sesión
+						Ver detalles
 					</button>
 				</div>
 			</div>

@@ -33,7 +33,7 @@ export const Register = () => {
 		};
 
 		// fetch de REGISTER
-		fetch("https://3001-brown-monkey-i76kyk39.ws-us04.gitpod.io/api/register", {
+		fetch(process.env.REACT_APP_BACKEND_URL + "/api/register", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {

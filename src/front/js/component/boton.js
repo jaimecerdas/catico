@@ -2,7 +2,7 @@ import React, { Component, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
-import "../../styles/navbar.scss";
+import "../../styles/principal.scss";
 
 export function Boton() {
 	const { store, actions } = useContext(Context);

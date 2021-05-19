@@ -24,7 +24,7 @@ export const Login = () => {
 			window.alert("Por favor revisar la información. No ingresó el campo: tipo de usuario");
 		}
 		// fetch de LOGIN
-		fetch("https://3001-brown-monkey-i76kyk39.ws-us04.gitpod.io/api/login", {
+		fetch(process.env.REACT_APP_BACKEND_URL + "/api/login", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
