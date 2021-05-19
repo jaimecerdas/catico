@@ -55,20 +55,18 @@ export const Detalles = props => {
 	executeRating(ratingStars, ratingResult);
 
 	return (
-		<div
-			ClassName="container"
-			style={{
-				backgroundImage: `url("https://static.vecteezy.com/system/resources/previews/001/223/457/non_2x/green-out-of-focus-background-free-photo.jpg")`
-			}}>
+		<div ClassName="container">
 			<div
-				className="card mb-3 border border-primary align-middle"
+				className="card mb-3 align-middle"
 				style={{
 					maxwidth: "540px",
 					margin: "1cm",
-					padding: "0.5cm"
+					padding: "0.5cm",
+					backgroundColor: "transparent",
+					borderWidth: "1cm"
 				}}>
-				<div className="row border border-primary align-items-center">
-					<div className="col-md-4 border border-warning">
+				<div className="row align-items-center">
+					<div className="col-md-4 ">
 						<Carousel fade>
 							<Carousel.Item>
 								<img className="d-block w-100 " src={store.lugares[index].url} alt="First slide" />
@@ -101,7 +99,7 @@ export const Detalles = props => {
 							</Carousel.Item>
 						</Carousel>
 					</div>
-					<div className="col-md-8 border border-success">
+					<div className="col-md-8 ">
 						<div className="col-md-8" key={index}>
 							<div className="card-body">
 								<h5 className="card-title">{store.lugares[index].nombre}</h5>
@@ -178,6 +176,7 @@ export const Detalles = props => {
 						src="https://i.pinimg.com/originals/94/ef/8c/94ef8cbd183d0cb15829512cbd5a1015.gif"
 						style={{ width: "4cm", height: "3cm", marginLeft: "1cm", WebkitMaskPositionX: "2cm" }}
 					/>
+					Regresar
 				</Link>
 			</div>
 			{sessionStorage.getItem("my_token") === null ? <Redirect to="/" /> : null}
