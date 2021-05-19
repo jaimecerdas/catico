@@ -1,10 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/navbar.scss";
-import { Boton } from "../component/boton";
+import "../../styles/principal.scss";
 
-/*
-<Link to="/homeEmpresario">
+export const Navbar = () => {
+	return (
+		<nav className="navbar navbar-light mb-3" id="navbar">
+			<Link to="/">
+				<span className="navbar-brand mb-0 h1">
+					{" "}
+					<img
+						src="https://i.ibb.co/QMhJvTz/Camping-White-Logo.png"
+						alt="Star Wars"
+						width="110"
+						height="100"
+					/>
+				</span>
+			</Link>
+			<div className="ml-auto">
+				<Link to="/homeEmpresario">
 					<button className="btn btn-light mx-2">HomeEmpresario</button>
 				</Link>
 				<Link to="/homeUsuario">
@@ -31,19 +44,6 @@ import { Boton } from "../component/boton";
 				<Link to="/usuario">
 					<button className="btn btn-primary">usuario</button>
 				</Link>
-*/
-
-export const Navbar = () => {
-	return (
-		<nav className="navbar navbar-light mb-3" id="navbar">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">
-					{" "}
-					<img src="https://i.ibb.co/d6Wxrph/Camping-Tico-Logo.jpg" alt="Star Wars" width="60" height="60" />
-				</span>
-			</Link>
-			<div className="ml-auto">
-				<Boton />
 			</div>
 		</nav>
 	);

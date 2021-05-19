@@ -51,13 +51,15 @@ class Lugares(db.Model):
     petFriendly = db.Column(db.String(120), unique=False, nullable=False)
     accesoTransporte = db.Column(db.String(120), unique=False, nullable=False)
     baños = db.Column(db.String(120), unique=False, nullable=False)
-    actividades = db.Column(db.String(120), unique=False, nullable=False)
+    actividades = db.Column(db.String(1000), unique=False, nullable=False)
     electricidad = db.Column(db.String(120), unique=False, nullable=False)
     ambiente = db.Column(db.String(120), unique=False, nullable=False)
-    descripcion =  db.Column(db.String(120), unique=False, nullable=False)
+    descripcion =  db.Column(db.String(1000), unique=False, nullable=False)
     contacto =  db.Column(db.String(120), unique=False, nullable=False)
     email =  db.Column(db.String(120), unique=False, nullable=False)
     telefono =  db.Column(db.String(120), unique=False, nullable=False)
+    empresario_email = db.Column(db.String(80), unique=False, nullable=False)
+    url = db.Column(db.String(250), unique=False, nullable=False)
 
     def __repr__(self):
         return '<Lugares %r>' % self.nombre
@@ -76,7 +78,8 @@ class Lugares(db.Model):
             "ambiente": self.ambiente,
             "contacto":self.contacto,
             "email":self.email,
-            "telefono":self.telefono
+            "telefono":self.telefono,
+            "url":self.url
         }
 
 class Visitas(db.Model):
