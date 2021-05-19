@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { Usuario } from "../pages/usuario";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
@@ -21,7 +21,7 @@ export const HomeUsuario = () => {
 				CampingTico
 				<i className="fas fa-leaf" style={{ color: "rgb(106 181 123)" }} />
 			</h1>
-			<div className="row  mt-4 pb-4 pt-2">
+			<div className="row  mt-4 pb-4 pt-2 ">
 				{store.lugares.map((item, index) => {
 					return (
 						<Usuario
@@ -32,13 +32,12 @@ export const HomeUsuario = () => {
 							electricidad={item.electricidad}
 							baños={item.baños}
 							petfriendly={item.petfriendly}
+							url={item.url}
 						/>
 					);
 				})}
 			</div>
-			<Link to="/">
-				<button className="btn btn-primary my-5">Back home</button>
-			</Link>
+			{sessionStorage.getItem("my_token") === null ? <Redirect to="/" /> : null}
 		</div>
 	);
 };

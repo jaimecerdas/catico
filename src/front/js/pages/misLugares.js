@@ -6,7 +6,7 @@ import { Context } from "../store/appContext";
 
 import "../../styles/demo.scss";
 
-export const Usuario = props => {
+export const MisLugares = props => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	let index = params.theid;
@@ -37,19 +37,27 @@ export const Usuario = props => {
 			</div>
 
 			<div className="card-body">
-				<Link to={"/detalles/" + props.id} key={index}>
-					<div className="col-sm" key={index}>
-						<a href="#" className="btn btn-warning">
-							Ver Más
-						</a>
-					</div>
-				</Link>
+				<div className="col-sm mb-1" key={index}>
+					<button className="btn btn-light mx-2" onClick={() => alert("Funcionalidad para futura version")}>
+						Editar
+					</button>
+				</div>
+				<div className="col-sm mb-1" key={index}>
+					<button className="btn btn-light mx-2" onClick={() => alert("Funcionalidad para futura version")}>
+						Borrar
+					</button>
+				</div>
+				<div className="col-sm mb-1" key={index}>
+					<button className="btn btn-light mx-2" onClick={() => alert("Funcionalidad para futura version")}>
+						Cerrar sesión
+					</button>
+				</div>
 			</div>
 		</div>
 	);
 };
 
-Usuario.propTypes = {
+MisLugares.propTypes = {
 	id: PropTypes.number,
 	nombre: PropTypes.string,
 	descripcion: PropTypes.string,

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-
-import { Link, useParams } from "react-router-dom";
+import { Redirect, Link, useParams } from "react-router-dom";
 import { Carousel, Jumbotron, Button } from "react-bootstrap";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
@@ -51,6 +50,7 @@ export const Detalles = props => {
 	}
 
 	executeRating(ratingStars, ratingResult);
+
 	return (
 		<div ClassName="container">
 			<div
@@ -111,7 +111,7 @@ export const Detalles = props => {
 											{store.lugares[index].contacto}
 										</div>
 										<div className="col">
-											<strong>E-mail:</strong>
+											<strong>E-mail: </strong>
 											{store.lugares[index].email}
 										</div>
 										<div className="col">
@@ -174,6 +174,7 @@ export const Detalles = props => {
 					/>
 				</Link>
 			</div>
+			{sessionStorage.getItem("my_token") === null ? <Redirect to="/" /> : null}
 		</div>
 	);
 };
