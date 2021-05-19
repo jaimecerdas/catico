@@ -112,7 +112,7 @@ export const Register = () => {
 						<p>Crea un pin en caso de que olvides la contraseña</p>
 					</div>
 				</div>
-				<button type="submit" className="btn btn-primary">
+				<button type="submit" className="btn btn-light">
 					Crear cuenta
 				</button>
 			</form>

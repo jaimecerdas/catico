@@ -103,7 +103,7 @@ export const Recuperacion = () => {
 						id="exampleInputPassword1"
 					/>
 				</div>
-				<button type="submit" className="btn btn-primary">
+				<button type="submit" className="btn btn-light">
 					Cambiar contraseña
 				</button>
 			</form>
