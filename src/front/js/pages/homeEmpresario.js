@@ -40,7 +40,7 @@ export const HomeEmpresario = () => {
 		console.log(body);
 
 		// fetch de Creacion de Lugar
-		fetch("https://3001-pink-asp-ngdvnli9.ws-us04.gitpod.io/api/addLugar", {
+		fetch(process.env.REACT_APP_BACKEND_URL + "/api/addLugar", {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
