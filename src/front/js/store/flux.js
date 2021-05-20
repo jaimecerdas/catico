@@ -37,7 +37,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			logout: () => {
 				sessionStorage.removeItem("my_token");
-				window.location.reload(false);
 			},
 			getMisLugares: () => {
 				let my_tokenUnique = sessionStorage.getItem("my_token");

@@ -3,16 +3,25 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/principal.scss";
+import { Redirect } from "react-router-dom";
 
 export function Boton() {
 	const { store, actions } = useContext(Context);
+	const [auth, setAuth] = useState(false);
 
 	if (sessionStorage.getItem("my_token") !== null) {
 		return (
 			<div className="ml-auto">
-				<button className="btn btn-light mx-2" onClick={actions.logout}>
+				<button
+					className="btn btn-light mx-2"
+					onClick={e => {
+						actions.logout;
+						window.location.reload(false);
+						setAuth(true);
+					}}>
 					Cerrar sesión
 				</button>
+				{auth == true ? <Redirect to="https://campingtico.vercel.app/" /> : null}
 			</div>
 		);
 	} else {
