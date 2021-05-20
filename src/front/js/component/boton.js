@@ -35,6 +35,7 @@ export function Boton() {
 				<Link to="/login">
 					<button className="btn btn-light mx-2">Ingreso</button>
 				</Link>
+                {auth == true ? <Redirect to="/" /> : null}
 			</div>
 		);
 	}
