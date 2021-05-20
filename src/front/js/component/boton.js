@@ -16,7 +16,7 @@ export function Boton() {
 					className="btn btn-light mx-2"
 					onClick={e => {
 						
-						window.location.reload(false);
+						//window.location.reload(false);
                         setAuth(true);
                         actions.logout;
 					}}>
