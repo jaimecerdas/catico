@@ -159,10 +159,22 @@ export const Detalles = props => {
 									{/* onClick=
 				{() => actions.addFavorites(element.name, "nombre")}
 				type="button"> */}
-									<i className="rating__star far fa-star" onClick={() => handleRating(1)} />
-									<i className="rating__star far fa-star" onClick={() => handleRating(2)} />
-									<i className="rating__star far fa-star" onClick={() => handleRating(3)} />
-									<i className="rating__star far fa-star" onClick={() => handleRating(4)} />
+									<i
+										className="rating__star far fa-star"
+										onClick={() => alert("Funcionalidad para futura version")}
+									/>
+									<i
+										className="rating__star far fa-star"
+										onClick={() => alert("Funcionalidad para futura version")}
+									/>
+									<i
+										className="rating__star far fa-star"
+										onClick={() => alert("Funcionalidad para futura version")}
+									/>
+									<i
+										className="rating__star far fa-star"
+										onClick={() => alert("Funcionalidad para futura version")}
+									/>
 									<i
 										className="rating__star far fa-star"
 										onClick={() => alert("Funcionalidad para futura version")}

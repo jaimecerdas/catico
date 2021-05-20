@@ -1,3 +1,37 @@
+# CampingTico 
+
+## How to run CampingTico?
+
+Steps:
+
+1. Use this command to bring up the database:
+
+sh docs/assets/reset_migrations.bash
+
+2. Run the backend `$ pipenv run start`
+3. Get the API HOST address from the backend Admin. For example "https://3001-azure-tapir-gecmv1xg.ws-us04.gitpod.io/"
+4. Update the backend url enviromental variable in .env:
+
+REACT_APP_BACKEND_URL=https://3001-azure-tapir-gecmv1xg.ws-us04.gitpod.io
+
+(Note: remove the ending "/").
+
+5. Save the .env file before continuing.
+6. Start the frontend `$ npm run start`
+7. Create two users: usuario and empresario.
+
+To populate the site with new locations, use the empresario account.
+To view the new locations, use the usuario account.
+
+Enjoy!
+
+
+The CampingTico Team.
+
+
+-----------------------------------------------
+
+
 # WebApp boilerplate with React JS
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-flask-hello.git)
 

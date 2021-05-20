@@ -103,20 +103,29 @@ export const Home = () => {
 				<div className="col-md-12">
 					<div>
 						<h1>¿Por qué acampar?</h1>
-						<p className="text-description padding-bottom-text" style={{ color: "rgb(255,255,255)" }}>
+						<p
+							className="text-description padding-bottom-text text2"
+							style={{ color: "rgb(255,255,255)" }}
+							id="text2">
 							Ir a acampar es una de las actividades más divertidas que podés hacer. Salir y disfrutar,
 							conocer, explorar y vivir para conectarte con la naturaleza y tener aventuras nuevas. Tantos
-							lugares increíbles que visitar es lo que nos ha motivado a ofrecer a todas aquellas personas
-							amantes del camping, un punto de encuentro con todos esos lugares mágicos que están ahí,
-							esperando a ser visitados.
+							lugares increíbles que visitar, es lo que nos ha motivado a ofrecer a todas aquellas
+							personas amantes del camping, un punto de encuentro con todos esos lugares mágicos que están
+							ahí, esperando ser visitados.
 						</p>
-						<p className="text-description padding-bottom-text" style={{ color: "rgb(255,255,255)" }}>
+						<p
+							className="text-description padding-bottom-text"
+							style={{ color: "rgb(255,255,255)" }}
+							id="text2">
 							Este es un esfuerzo para que nos salgamos de la rutina y disfrutemos del camino, del momento
 							y del lugar que hacen que la vida se llene de experiencias e historias que compartir.
 							Acampar al aire libre es salud mental, el espíritu se relaja y se experimenta la libertad
 							que el contacto con la naturaleza nos ofrece.
 						</p>
-						<p className="text-description padding-bottom-text" style={{ color: "rgb(255,255,255)" }}>
+						<p
+							className="text-description padding-bottom-text"
+							style={{ color: "rgb(255,255,255)" }}
+							id="text2">
 							Ir de camping para disfrutar los paisajes de las montañas, volcanes, playas, valles y
 							llanuras es lo que nos mueve. Nuestro principal objetivo es ser una guía para mostrar esos
 							espacios abiertos maravillosos a todos esos viajeros y viajeras que están ahí, esperando por
@@ -141,13 +150,19 @@ export const Home = () => {
 			<div className="d-flex justify-content-center align-middle mt-5 mb-5">
 				<div className="col-md-12">
 					<div>
-						<h1>¿Quienes somos?</h1>
-						<p className="text-description padding-bottom-text" style={{ color: "rgb(255,255,255)" }}>
+						<h1>¿Quiénes somos?</h1>
+						<p
+							className="text-description padding-bottom-text text2"
+							style={{ color: "rgb(255,255,255)" }}
+							id="text2">
 							Somos un grupo de entusiastas de la programación, quienes a través de una beca de CINDE
-							(Coalición Costarricense de Iniciativas de Desarrollo)nos conocimos y desarrollamos este
+							(Coalición Costarricense de Iniciativas de Desarrollo) nos conocimos y desarrollamos este
 							sitio web.
 						</p>
-						<p className="text-description padding-bottom-text" style={{ color: "rgb(255,255,255)" }}>
+						<p
+							className="text-description padding-bottom-text"
+							style={{ color: "rgb(255,255,255)" }}
+							id="text2">
 							{" "}
 							Nuestros perfiles profesionales son muy diferentes, tenemos un abogado, una profesional de
 							Ciencias del movimiento humano, un Especialista de Cumplimiento legal y un Mercadólogo
@@ -155,15 +170,21 @@ export const Home = () => {
 							esta idea, la cual nació de la necesidad de promocionar el turismo en nuestro país, el cual
 							se ha visto tan afectado debido a la crisis sanitaria que está viviendo el mundo.
 						</p>
-						<p className="text-description padding-bottom-text" style={{ color: "rgb(255,255,255)" }}>
+						<p
+							className="text-description padding-bottom-text"
+							style={{ color: "rgb(255,255,255)" }}
+							id="text2">
 							Nuestra intención es sumar esfuerzos para ayudar a esos pequeños emprendimientos enfocados
 							en la actividad turística, específicamente los que ofrecen lugares para acampar. Queremos
 							ser un canal por medio del cual, las personas que disfrutan de esta actividad puedan tener
 							fácil acceso a un sitio donde se unifique la información de todos estos lugares que existen
 							en nuestro país y que muchas veces pasan desapercibidos.
 						</p>
-						<p className="text-description padding-bottom-text" style={{ color: "rgb(255,255,255)" }}>
-							Somos ticos que nos gusta el camping, por eso nombramos este sitio Camping Tico. Esperamos
+						<p
+							className="text-description padding-bottom-text"
+							style={{ color: "rgb(255,255,255)" }}
+							id="text2">
+							Somos ticos que nos gusta el camping, por eso nombramos este sitio CampingTico. Esperamos
 							que lo disfruten.
 						</p>
 					</div>
@@ -171,7 +192,7 @@ export const Home = () => {
 			</div>
 			<div className="d-flex justify-content-center align-middle mt-5 mb-5">
 				<div className="col-md-12">
-					<h1>Este proyecto se realizo con apoyo de:</h1>
+					<h1>Este proyecto se realizó con apoyo de:</h1>
 					<a className="img-cinde" href="https://www.cinde.org/es" rel="noopener noreferrer" target="_blank">
 						<img
 							id="img-cinde"
