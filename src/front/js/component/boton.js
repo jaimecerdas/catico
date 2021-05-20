@@ -22,7 +22,7 @@ export function Boton() {
 					}}>
 					Cerrar sesión
 				</button>
-				{auth == true ? <Redirect to="https://campingtico.vercel.app/" /> : null}
+                {auth == true ? <Redirect to="/" /> : null}
 			</div>
 		);
 	} else {
