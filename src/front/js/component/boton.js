@@ -19,6 +19,7 @@ export function Boton() {
 						//window.location.reload(false);
                         setAuth(true);
                         actions.logout;
+                        sessionStorage.removeItem("my_token");
 					}}>
 					Cerrar sesión
 				</button>
