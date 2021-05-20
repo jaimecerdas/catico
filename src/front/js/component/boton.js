@@ -15,9 +15,10 @@ export function Boton() {
 				<button
 					className="btn btn-light mx-2"
 					onClick={e => {
-						actions.logout;
+						
 						window.location.reload(false);
-						setAuth(true);
+                        setAuth(true);
+                        actions.logout;
 					}}>
 					Cerrar sesión
 				</button>
